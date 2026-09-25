@@ -32,7 +32,7 @@ body {
 
 #stage {
   position: fixed;
-  inset: 0; /* Ocupa toda la pantalla sin dejar huecos */
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,10 +87,55 @@ h1.big { font-size: clamp(1.9rem, 5vw, 3.6rem); margin: 0 0 .6rem; font-weight: 
 p.lead { color: var(--dim); max-width: 560px; line-height: 1.6; font-size: clamp(.85rem, 1.3vw, 1rem); }
 .idx { position: absolute; top: 6%; right: 8%; font-size: .75rem; color: var(--dim); }
 
-/* Ajustes de alineación para diapositivas específicas */
+/* Ajustes de alineación de secciones */
 #s0 { align-items: flex-start; }
 #s1 { align-items: center; text-align: center; } /* Centra el menú de carreras */
 
+/* --- ESTILOS PANTALLA PRINCIPAL Y LOGO ANIMADO --- */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.utn-animated-logo {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  opacity: 0.9;
+  filter: drop-shadow(0 10px 20px rgba(2, 85, 123, 0.15));
+}
+
+.draw-line, .draw-arc {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: drawFromCenter 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.draw-arc.delay {
+  animation-delay: 0.6s;
+}
+
+@keyframes drawFromCenter {
+  to { stroke-dashoffset: 0; }
+}
+
+/* --- BOTONES Y COMPONENTES --- */
 .startbtn {
   margin-top: 1.6rem;
   border: 1px solid var(--azul);
@@ -217,6 +262,17 @@ p.lead { color: var(--dim); max-width: 560px; line-height: 1.6; font-size: clamp
 .career-card:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* --- RESPONSIVE (Celulares y Pantallas chicas) --- */
+@media (max-width: 900px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: left;
+  }
+  .hero-visual {
+    display: none; 
+  }
 }
 
 @media (max-width: 640px) {
