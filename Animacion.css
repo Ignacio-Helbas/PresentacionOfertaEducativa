@@ -203,7 +203,7 @@ p.lead {
 .draw-path {
   stroke-dasharray: 60; 
   stroke-dashoffset: 60;
-  animation: utnDraw 2.5s ease-out forwards;
+  animation: utnDraw 2.0s ease-out forwards;
 }
 
 .draw-path.delay-1 { animation-delay: 0.1s; }
