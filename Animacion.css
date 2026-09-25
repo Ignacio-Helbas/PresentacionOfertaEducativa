@@ -198,23 +198,31 @@ p.lead {
   overflow: visible; 
 }
 
-/* Animación: Dibujo desde el centro hacia afuera (FLUIDO) */
+/* Animación: Dibujo desde el centro hacia afuera (FLUIDEZ EXTREMA) */
 .draw-path {
-  stroke-dasharray: 200; 
-  stroke-dashoffset: 200;
-  animation: utnDraw 1.8s ease-in-out forwards;
+  /* 1. EL RECORRIDO (Dasharray/Offset): 
+     Lo bajamos de 200 a 60 para que coincida con el largo real de 
+     los trazos. Así aprovecha cada milisegundo del tiempo asignado. */
+  stroke-dasharray: 60; 
+  stroke-dashoffset: 60;
+  
+  /* 2. EL TIEMPO Y LA CURVA (Duration & Easing):
+     Le damos 2.5s (más lento) y usamos 'ease-out' para que el 
+     trazo frene muy suavemente al llegar a las puntas. */
+  animation: utnDraw 2.5s ease-out forwards;
 }
 
-/* Delays acortados para fluidez */
-.draw-path.delay-1 { animation-delay: 0.15s; }
-.draw-path.delay-2 { animation-delay: 0.3s; }
-.draw-path.delay-3 { animation-delay: 0.45s; }
+/* 3. LOS RETRASOS (Delays):
+   Los hacemos más cortitos (0.1, 0.2, 0.3). Al estar casi pegados, 
+   el ojo percibe que es un solo flujo de energía naciendo del centro. */
+.draw-path.delay-1 { animation-delay: 0.1s; }
+.draw-path.delay-2 { animation-delay: 0.2s; }
+.draw-path.delay-3 { animation-delay: 0.3s; }
 
 @keyframes utnDraw {
-  0% { stroke-dashoffset: 200; }
+  0% { stroke-dashoffset: 60; }
   100% { stroke-dashoffset: 0; }
 }
-
 
 /* --------------------------------------------------------------------------
    7. DIAPOSITIVA 1: MATRIZ DE CARRERAS (Grid 2x2)
