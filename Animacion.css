@@ -91,49 +91,22 @@ p.lead { color: var(--dim); max-width: 560px; line-height: 1.6; font-size: clamp
 #s0 { align-items: flex-start; }
 #s1 { align-items: center; text-align: center; } /* Centra el menú de carreras */
 
-/* --- ESTILOS PANTALLA PRINCIPAL Y LOGO ANIMADO --- */
-.hero-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  gap: 3rem;
-  margin-top: 2rem;
-}
-
-.hero-text {
-  flex: 1;
-  max-width: 600px;
-}
-
-.hero-visual {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 250px;
-}
-
-.utn-animated-logo {
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  filter: drop-shadow(0 10px 20px rgba(2, 85, 123, 0.2));
-  overflow: visible; 
-}
-
+/* Animación de Trazos del Logo Oficial */
 .draw-path {
   stroke-dasharray: 400; 
   stroke-dashoffset: 400;
-  animation: utnDraw 2s ease-in-out forwards;
+  animation: utnDraw 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-.draw-path.delay {
+/* Secuencia de dibujo para cada pieza */
+.draw-path.delay-1 {
+  animation-delay: 0.3s;
+}
+.draw-path.delay-2 {
   animation-delay: 0.6s;
 }
-
-.draw-path.circle-delay {
-  animation-delay: 1.2s;
+.draw-path.delay-3 {
+  animation-delay: 0.9s;
 }
 
 @keyframes utnDraw {
