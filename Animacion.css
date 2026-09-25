@@ -198,17 +198,18 @@ p.lead {
   overflow: visible; 
 }
 
-/* Animación: Dibujo desde el centro hacia afuera */
+/* Animación: Dibujo desde el centro hacia afuera (MÁS FLUIDO) */
 .draw-path {
-  stroke-dasharray: 200; /* Reducido porque los trazos ahora son a la mitad */
+  stroke-dasharray: 200; 
   stroke-dashoffset: 200;
-  animation: utnDraw 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  /* Tiempo extendido a 1.8s y curva ease-in-out para suavizar el trazo */
+  animation: utnDraw 1.8s ease-in-out forwards;
 }
 
-/* Orden en el que se disparan las líneas desde el centro */
-.draw-path.delay-1 { animation-delay: 0.2s; }
-.draw-path.delay-2 { animation-delay: 0.4s; }
-.draw-path.delay-3 { animation-delay: 0.6s; }
+/* Delays acortados para que los trazos se superpongan y parezcan uno solo */
+.draw-path.delay-1 { animation-delay: 0.15s; }
+.draw-path.delay-2 { animation-delay: 0.3s; }
+.draw-path.delay-3 { animation-delay: 0.45s; }
 
 @keyframes utnDraw {
   0% { stroke-dashoffset: 200; }
