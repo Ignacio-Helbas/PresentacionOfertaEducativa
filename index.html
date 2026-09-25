@@ -14,20 +14,50 @@
   <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
   <div class="progress" id="progress"></div>
 
-  <!-- DIAPOSITIVA 0: Bienvenida e Institución Unificadas -->
+  <!-- DIAPOSITIVA 0: Bienvenida e Institución con Logo Animado -->
   <div class="slide active" id="s0">
     <span class="idx mono">00 / 07</span>
-    <span class="tag mono">UTN · FACULTAD REGIONAL SAN RAFAEL</span>
-    <h1 class="big">Elegí tu<br>ingeniería.</h1>
-    <p class="lead">La única universidad nacional con eje en la ingeniería. Más de cinco décadas formando profesionales con sólida base científica y técnica, comprometidos con el desarrollo regional.</p>
     
-    <div class="statrow">
-      <div class="stat"><b class="mono">1948</b><span>Fundación histórica</span></div>
-      <div class="stat"><b class="mono">04</b><span>Carreras de grado</span></div>
-      <div class="stat"><b class="mono">05</b><span>Años de duración</span></div>
+    <div class="hero-container">
+      <div class="hero-text">
+        <span class="tag mono">UTN · FACULTAD REGIONAL SAN RAFAEL</span>
+        <h1 class="big">Elegí tu<br>ingeniería.</h1>
+        <p class="lead">La única universidad nacional con eje en la ingeniería. Más de cinco décadas formando profesionales con sólida base científica y técnica, comprometidos con el desarrollo regional.</p>
+        
+        <div class="statrow">
+          <div class="stat"><b class="mono">1948</b><span>Fundación histórica</span></div>
+          <div class="stat"><b class="mono">04</b><span>Carreras de grado</span></div>
+          <div class="stat"><b class="mono">05</b><span>Años de duración</span></div>
+        </div>
+
+        <button class="startbtn mono" style="margin-top: 2.5rem;" onclick="go(1)">EXPLORAR CARRERAS →</button>
+      </div>
+
+      <!-- Contenedor del Logo Animado UTN (La "Araña") -->
+      <div class="hero-visual">
+        <svg class="utn-animated-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="var(--azul)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <!-- Circulo exterior tenue -->
+            <circle class="draw-path circle-delay" cx="50" cy="50" r="42" stroke-width="1.5" opacity="0.3" />
+            
+            <!-- Semicírculo superior -->
+            <path class="draw-path" d="M 22 50 A 28 28 0 0 1 78 50" />
+            
+            <!-- Patas de la Pi -->
+            <path class="draw-path" d="M 33 50 L 33 80" />
+            <path class="draw-path" d="M 67 50 L 67 80" />
+            
+            <!-- Ejes horizontales -->
+            <path class="draw-path" d="M 22 50 L 33 50" />
+            <path class="draw-path" d="M 67 50 L 78 50" />
+            
+            <!-- Resistencia (Zig-Zag central) -->
+            <path class="draw-path delay" d="M 33 50 L 38 38 L 50 62 L 62 38 L 67 50" />
+          </g>
+        </svg>
+      </div>
     </div>
 
-    <button class="startbtn mono" style="margin-top: 2.5rem;" onclick="go(1)">EXPLORAR CARRERAS →</button>
     <div class="blueline"></div>
   </div>
 
@@ -36,10 +66,11 @@
     <span class="idx mono">01 / 07</span>
     <span class="tag mono">OFERTA ACADÉMICA</span>
     <h1 class="big" style="font-size:clamp(1.5rem,3.4vw,2.2rem)">Seleccioná una especialidad</h1>
-    <!-- El contenedor de la matriz, las tarjetas se generan con JavaScript -->
+    <!-- El contenedor de la matriz -->
     <div id="career-grid" class="career-grid"></div>
   </div>
 
+  <!-- DIAPOSITIVA 6: Test de orientación -->
   <div class="slide" id="s6">
     <span class="idx mono">06 / 07</span>
     <span class="tag mono">TEST DE ORIENTACIÓN</span>
@@ -50,6 +81,7 @@
     </div>
   </div>
 
+  <!-- DIAPOSITIVA 7: Contacto -->
   <div class="slide" id="s7">
     <span class="idx mono">07 / 07</span>
     <span class="tag mono">CONTACTO</span>
@@ -114,7 +146,6 @@ CAREERS.forEach((c, i) => {
     </div>
     <h3 style="margin:0; font-size:1.1rem; color:var(--ink)">${c.name}</h3>
   `;
-  // Al hacer clic, navega al índice correspondiente (i + 2 porque empezamos en 0 y 1)
   card.onclick = () => go(i + 2);
   gridEl.appendChild(card);
 
