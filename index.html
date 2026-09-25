@@ -14,26 +14,30 @@
   <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
   <div class="progress" id="progress"></div>
 
+  <!-- DIAPOSITIVA 0: Bienvenida e Institución Unificadas -->
   <div class="slide active" id="s0">
     <span class="idx mono">00 / 07</span>
     <span class="tag mono">UTN · FACULTAD REGIONAL SAN RAFAEL</span>
     <h1 class="big">Elegí tu<br>ingeniería.</h1>
-    <p class="lead">Cuatro carreras de grado. Una universidad pensada para la ingeniería desde 1948. Recorré el mapa técnico de cada especialidad y descubrí cuál va con vos.</p>
-    <button class="startbtn mono" onclick="go(1)">INICIAR RECORRIDO →</button>
+    <p class="lead">La única universidad nacional con eje en la ingeniería. Más de cinco décadas formando profesionales con sólida base científica y técnica, comprometidos con el desarrollo regional.</p>
+    
+    <div class="statrow">
+      <div class="stat"><b class="mono">1948</b><span>Fundación histórica</span></div>
+      <div class="stat"><b class="mono">04</b><span>Carreras de grado</span></div>
+      <div class="stat"><b class="mono">05</b><span>Años de duración</span></div>
+    </div>
+
+    <button class="startbtn mono" style="margin-top: 2.5rem;" onclick="go(1)">EXPLORAR CARRERAS →</button>
     <div class="blueline"></div>
   </div>
 
+  <!-- DIAPOSITIVA 1: Matriz 2x2 de Carreras -->
   <div class="slide" id="s1">
     <span class="idx mono">01 / 07</span>
-    <span class="tag mono">SOBRE LA INSTITUCIÓN</span>
-    <h1 class="big" style="font-size:clamp(1.5rem,3.4vw,2.2rem)">La única universidad nacional con eje en la ingeniería.</h1>
-    <p class="lead">La Facultad Regional San Rafael desarrolla su labor con más de cinco décadas de trayectoria, formando profesionales con sólida base científica y técnica, comprometidos con el desarrollo regional.</p>
-    <div class="statrow">
-      <div class="stat"><b class="mono">1948</b><span>Fundación como Universidad Obrera Nacional</span></div>
-      <div class="stat"><b class="mono">04</b><span>Carreras de grado en ingeniería</span></div>
-      <div class="stat"><b class="mono">~4000 hs</b><span>Carga horaria promedio por carrera</span></div>
-      <div class="stat"><b class="mono">05</b><span>Años de duración estándar</span></div>
-    </div>
+    <span class="tag mono">OFERTA ACADÉMICA</span>
+    <h1 class="big" style="font-size:clamp(1.5rem,3.4vw,2.2rem)">Seleccioná una especialidad</h1>
+    <!-- El contenedor de la matriz, las tarjetas se generan con JavaScript -->
+    <div id="career-grid" class="career-grid"></div>
   </div>
 
   <div class="slide" id="s6">
@@ -96,12 +100,29 @@ const CAREERS=[
   path:'<rect x="3" y="10" width="4" height="10"/><rect x="10" y="6" width="4" height="14"/><rect x="17" y="3" width="4" height="17"/>'}
 ];
 
-const deck=document.getElementById("deck");
-CAREERS.forEach((c,i)=>{
-  const el=document.createElement("div");
-  el.className="slide"; el.id="career"+i;
-  // AQUI SE MODIFICO EL TAMAÑO DE LA ETIQUETA DE CARRERA (font-size: 1.1rem; font-weight: bold;)
-  el.innerHTML=`
+const deck = document.getElementById("deck");
+const gridEl = document.getElementById("career-grid");
+
+CAREERS.forEach((c, i) => {
+  // 1. Generar la tarjeta para la Matriz 2x2
+  const card = document.createElement("div");
+  card.className = "career-card";
+  card.style.borderColor = c.color;
+  card.innerHTML = `
+    <div class="iconbox" style="background:${c.color}; margin: 0 auto 1rem auto;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">${c.path}</svg>
+    </div>
+    <h3 style="margin:0; font-size:1.1rem; color:var(--ink)">${c.name}</h3>
+  `;
+  // Al hacer clic, navega al índice correspondiente (i + 2 porque empezamos en 0 y 1)
+  card.onclick = () => go(i + 2);
+  gridEl.appendChild(card);
+
+  // 2. Generar la diapositiva detallada de la carrera
+  const el = document.createElement("div");
+  el.className = "slide"; 
+  el.id = "career" + i;
+  el.innerHTML = `
     <span class="idx mono">0${i+2} / 07</span>
     <span class="tag mono" style="color:${c.color}; font-size: 1.1rem; font-weight: bold;">CARRERA 0${i+1} · ${c.years.toUpperCase()}</span>
     <div class="career">
@@ -114,14 +135,18 @@ CAREERS.forEach((c,i)=>{
           <div class="metric"><b class="mono" style="color:${c.color}">${c.hours}</b><span>Carga horaria</span></div>
         </div>
         <div class="chips">${c.chips.map(x=>`<span class="chip">${x}</span>`).join("")}</div>
-        <a class="planbtn mono" style="background:${c.color}" href="${c.plan}" target="_blank" rel="noopener">VER PLAN DE ESTUDIOS ↗</a>
+        
+        <div style="display:flex; gap:10px; margin-top:1.3rem; flex-wrap: wrap;">
+            <a class="planbtn mono" style="background:${c.color}" href="${c.plan}" target="_blank" rel="noopener">VER PLAN ↗</a>
+            <button class="startbtn mono" style="margin-top:0; border-color:${c.color}; color:${c.color}" onclick="go(1)">← VOLVER</button>
+        </div>
       </div>
       <div class="rightpanel" style="border-color:${c.color}66">
         <div class="scanline" style="background:${c.color}"></div>
         <svg viewBox="0 0 24 24" fill="none" stroke="${c.color}" stroke-width="1.2" opacity="0.9">${c.path}</svg>
       </div>
     </div>`;
-  deck.insertBefore(el,document.getElementById("s6"));
+  deck.insertBefore(el, document.getElementById("s6"));
 });
 
 const slides=[...document.querySelectorAll(".slide")];
