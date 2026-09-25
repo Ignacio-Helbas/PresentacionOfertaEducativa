@@ -42,7 +42,7 @@ body {
   background: var(--bg0);
   color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
-  overflow: hidden; /* Evita el scroll nativo */
+  overflow: hidden; 
 }
 
 
@@ -115,7 +115,7 @@ body {
 
 /* Alineaciones específicas */
 #s0 { align-items: flex-start; }
-#s1 { align-items: center; text-align: center; } /* Centra el menú de la grilla */
+#s1 { align-items: center; text-align: center; }
 
 
 /* --------------------------------------------------------------------------
@@ -198,15 +198,14 @@ p.lead {
   overflow: visible; 
 }
 
-/* Animación: Dibujo desde el centro hacia afuera (MÁS FLUIDO) */
+/* Animación: Dibujo desde el centro hacia afuera (FLUIDO) */
 .draw-path {
   stroke-dasharray: 200; 
   stroke-dashoffset: 200;
-  /* Tiempo extendido a 1.8s y curva ease-in-out para suavizar el trazo */
   animation: utnDraw 1.8s ease-in-out forwards;
 }
 
-/* Delays acortados para que los trazos se superpongan y parezcan uno solo */
+/* Delays acortados para fluidez */
 .draw-path.delay-1 { animation-delay: 0.15s; }
 .draw-path.delay-2 { animation-delay: 0.3s; }
 .draw-path.delay-3 { animation-delay: 0.45s; }
@@ -278,7 +277,7 @@ p.lead {
 
 .iconbox svg { width: 32px; height: 32px; }
 
-/* Tarjetas pequeñas (Chips) de cualidades */
+/* Tarjetas pequeñas (Chips) */
 .chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
 .chip { font-size: .68rem; border: 1px solid var(--line); color: var(--dim); padding: .3rem .6rem; border-radius: 4px; background: var(--bg0); }
 
@@ -292,7 +291,7 @@ p.lead {
 .stat b { display: block; font-size: 1.6rem; color: var(--ink); }
 .stat span { font-size: .72rem; color: var(--dim); }
 
-/* Panel derecho (Arte abstracto animado) */
+/* Panel derecho con animación */
 .rightpanel {
   position: relative;
   height: 75%;
@@ -404,13 +403,13 @@ p.lead {
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .hero-container {
-    flex-direction: column-reverse; /* Pone el logo arriba del texto */
+    flex-direction: column-reverse;
     text-align: center;
     gap: 2rem;
   }
   .hero-visual {
     display: flex; 
-    max-width: 180px; /* Logo más chico en tablets */
+    max-width: 180px;
   }
   .blueline {
     display: none;
