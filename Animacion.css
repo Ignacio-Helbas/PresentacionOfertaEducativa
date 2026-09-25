@@ -100,7 +100,7 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
 .hero-visual { flex: 1; display: flex; justify-content: center; align-items: center; min-height: 250px; }
 
 .utn-animated-logo { width: 100%; max-width: 320px; height: auto; filter: drop-shadow(0 10px 20px rgba(2, 85, 123, 0.2)); overflow: visible; }
-.draw-path { stroke-dasharray: 60; stroke-dashoffset: 60; animation: utnDraw 1.5s ease-out forwards; }
+.draw-path { stroke-dasharray: 60; stroke-dashoffset: 60; animation: utnDraw 0.5s ease-out forwards; }
 .draw-path.delay-1 { animation-delay: 0.1s; }
 .draw-path.delay-2 { animation-delay: 0.2s; }
 .draw-path.delay-3 { animation-delay: 0.3s; }
