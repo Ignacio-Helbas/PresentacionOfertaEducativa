@@ -1,461 +1,225 @@
 /* ==========================================================================
-   UTN SAN RAFAEL - MUESTRA EDUCATIVA
-   Hoja de Estilos Principal (Animacion.css)
+   UTN SAN RAFAEL - MUESTRA EDUCATIVA (Adaptado 9:16 Móvil)
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   1. VARIABLES Y PALETA DE COLORES (AHORA MÁS OSCUROS Y LEGIBLES)
-   -------------------------------------------------------------------------- */
 :root {
-  /* Paleta Light Mode */
-  --ink: #0a0a0a;         /* Texto oscuro principal (Casi negro puro) */
-  --dim: #334155;         /* Texto secundario gris (Gris pizarra oscuro, mucho más legible) */
-  --line: rgba(0,0,0,0.15);/* Líneas tenues un poquito más marcadas */
-  --bg0: #f1f5f9;         /* Fondo exterior (gris muy clarito) */
-  --bg1: #ffffff;         /* Fondo interior de las pantallas (blanco) */
-  
-  /* Colores Oficiales de las Carreras */
+  --ink: #0a0a0a;         
+  --dim: #334155;         
+  --line: rgba(0,0,0,0.15);
+  --bg0: #f1f5f9;         
+  --bg1: #ffffff;         
   --civil: #ea5437; 
   --electro: #55749a; 
   --industrial: #7a8216; 
   --sistemas: #ed2f59; 
-  
-  /* Azul Institucional UTN */
   --azul: #02557b;
 }
 
-
-/* --------------------------------------------------------------------------
-   2. RESET Y CONFIGURACIÓN BASE
-   -------------------------------------------------------------------------- */
-* { 
-  box-sizing: border-box; 
-}
-
-html, body { 
-  height: 100%; 
-}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
 
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
   background: var(--bg0);
   color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
   overflow: hidden; 
 }
 
-
-/* --------------------------------------------------------------------------
-   3. CONTENEDORES PRINCIPALES (Stage & Deck)
-   -------------------------------------------------------------------------- */
 #stage {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
   background: radial-gradient(circle at 20% 10%, #ffffff 0%, var(--bg0) 80%);
 }
 
 #deck {
   position: relative;
-  width: 100%;
+  width: 100%; height: 100%;
+  max-height: 100vh;
   max-width: 1400px;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/9; /* Para PC se mantiene rectangular */
   background: var(--bg1);
   border: 1px solid var(--line);
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0,0,0,0.1); 
 }
 
-/* Grilla de fondo (Patrón de puntos) */
 .bpgrid {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+  position: absolute; inset: 0; pointer-events: none;
   background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 42px 42px;
-  opacity: .5;
+  background-size: 42px 42px; opacity: .5;
 }
 
-/* Esquineros decorativos azules */
 .corner { position: absolute; width: 26px; height: 26px; border: 2px solid var(--azul); opacity: .7; pointer-events: none; }
 .corner.tl { top: 14px; left: 14px; border-right: none; border-bottom: none; }
 .corner.tr { top: 14px; right: 14px; border-left: none; border-bottom: none; }
 .corner.bl { bottom: 14px; left: 14px; border-right: none; border-top: none; }
 .corner.br { bottom: 14px; right: 14px; border-left: none; border-top: none; }
 
-
-/* --------------------------------------------------------------------------
-   4. DIAPOSITIVAS (Slides) - ESTRUCTURA GENERAL
-   -------------------------------------------------------------------------- */
+/* Envoltorio principal de cada diapositiva */
 .slide {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: center;
   padding: 6% 8%;
-  opacity: 0;
-  transform: translateX(40px);
+  opacity: 0; transform: translateX(40px);
   transition: opacity .5s ease, transform .5s ease;
   pointer-events: none;
+  overflow-y: auto; /* Fundamental para celulares */
+  overflow-x: hidden;
 }
 
-.slide.active { 
-  opacity: 1; 
-  transform: translateX(0); 
-  pointer-events: auto; 
-}
+/* Ocultar barra de scroll para estética app */
+.slide::-webkit-scrollbar { width: 0px; background: transparent; }
 
-.slide.left { 
-  transform: translateX(-40px); 
-}
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.slide.left { transform: translateX(-40px); }
 
-#s0 { align-items: flex-start; }
-#s1 { align-items: center; text-align: center; }
-
-
-/* --------------------------------------------------------------------------
-   5. TIPOGRAFÍA Y TEXTOS GLOBALES (TAMAÑOS AUMENTADOS)
-   -------------------------------------------------------------------------- */
-.mono { 
-  font-family: "Courier New", monospace; 
-  letter-spacing: .08em; 
-}
-
-h1.big { 
-  font-size: clamp(2.2rem, 5vw, 4rem); /* Títulos más imponentes */
-  margin: 0 0 .6rem; 
-  font-weight: 800; 
-  line-height: 1.05; 
-}
-
-p.lead { 
-  color: var(--dim); 
-  max-width: 600px; 
-  line-height: 1.6; 
-  font-size: clamp(1.05rem, 1.5vw, 1.25rem); /* Párrafos mucho más grandes y legibles */
-}
-
-.tag { 
-  display: inline-flex; 
-  align-items: center; 
-  gap: 8px; 
-  font-size: .85rem; /* Etiquetas más grandes */
-  color: var(--azul); 
-  margin-bottom: 1rem; 
-  font-weight: bold;
-}
-
-.tag::before { 
-  content: ""; 
-  width: 30px; 
-  height: 2px; 
-  background: var(--azul); 
-}
-
-.idx { 
-  position: absolute; 
-  top: 6%; 
-  right: 8%; 
-  font-size: .9rem; /* Contador de diapositiva más grande */
-  color: var(--dim); 
-  font-weight: bold;
-}
-
-
-/* --------------------------------------------------------------------------
-   6. DIAPOSITIVA 0: PANTALLA PRINCIPAL Y LOGO ANIMADO UTN
-   -------------------------------------------------------------------------- */
-.hero-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Contenedor interno para centrar el contenido y respetar márgenes del scroll */
+.slide-content {
   width: 100%;
-  gap: 3rem;
-  margin-top: 2rem;
+  margin: auto 0;
+  display: flex; flex-direction: column;
 }
 
-.hero-text {
-  flex: 1;
-  max-width: 650px;
-}
+#s0 .slide-content { align-items: flex-start; }
+#s1 .slide-content { align-items: center; text-align: center; }
 
-.hero-visual {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 250px;
-}
+/* Tipografía general */
+.mono { font-family: "Courier New", monospace; letter-spacing: .08em; }
+h1.big { font-size: clamp(2.2rem, 5vw, 4rem); margin: 0 0 .6rem; font-weight: 800; line-height: 1.05; }
+p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp(1.05rem, 1.5vw, 1.25rem); }
 
-.utn-animated-logo {
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  filter: drop-shadow(0 10px 20px rgba(2, 85, 123, 0.2));
-  overflow: visible; 
-}
+.tag { display: inline-flex; align-items: center; gap: 8px; font-size: .85rem; color: var(--azul); margin-bottom: 1rem; font-weight: bold; }
+.tag::before { content: ""; width: 30px; height: 2px; background: var(--azul); }
 
-/* Animación de la Araña Fluida (Mantenemos la configuración que te gustó) */
-.draw-path {
-  stroke-dasharray: 60; 
-  stroke-dashoffset: 60;
-  animation: utnDraw 2.0s ease-out forwards;
-}
+.idx { position: absolute; top: 6%; right: 8%; font-size: .9rem; color: var(--dim); font-weight: bold; }
 
+/* Portada y Logo UTN */
+.hero-container { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 3rem; margin-top: 2rem; }
+.hero-text { flex: 1; max-width: 650px; }
+.hero-visual { flex: 1; display: flex; justify-content: center; align-items: center; min-height: 250px; }
+
+.utn-animated-logo { width: 100%; max-width: 320px; height: auto; filter: drop-shadow(0 10px 20px rgba(2, 85, 123, 0.2)); overflow: visible; }
+.draw-path { stroke-dasharray: 60; stroke-dashoffset: 60; animation: utnDraw 2.5s ease-out forwards; }
 .draw-path.delay-1 { animation-delay: 0.1s; }
 .draw-path.delay-2 { animation-delay: 0.2s; }
 .draw-path.delay-3 { animation-delay: 0.3s; }
+@keyframes utnDraw { 0% { stroke-dashoffset: 60; } 100% { stroke-dashoffset: 0; } }
 
-@keyframes utnDraw {
-  0% { stroke-dashoffset: 60; }
-  100% { stroke-dashoffset: 0; }
-}
+/* Grilla de Carreras 2x2 */
+.career-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; margin-left: auto; margin-right: auto; max-width: 800px; width: 100%; }
+.career-card { background: var(--bg1); border: 2px solid; border-radius: 12px; padding: 2.5rem 1.5rem; text-align: center; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); box-shadow: 0 4px 6px var(--line); display: flex; flex-direction: column; justify-content: center; }
+.career-card h3 { font-size: 1.3rem !important; margin-top: 10px !important; }
+.career-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
 
-
-/* --------------------------------------------------------------------------
-   7. DIAPOSITIVA 1: MATRIZ DE CARRERAS (Grid 2x2)
-   -------------------------------------------------------------------------- */
-.career-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 800px;
-  width: 100%;
-}
-
-.career-card {
-  background: var(--bg1);
-  border: 2px solid;
-  border-radius: 12px;
-  padding: 2.5rem 1.5rem; /* Un poco más de espacio interior */
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 4px 6px var(--line);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.career-card h3 {
-  font-size: 1.3rem !important; /* Forzamos nombres de carrera más grandes en la grilla */
-  margin-top: 10px !important;
-}
-
-.career-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-}
-
-
-/* --------------------------------------------------------------------------
-   8. DIAPOSITIVAS DE CARRERAS (Detalles, Iconos, Métricas)
-   -------------------------------------------------------------------------- */
-.career { 
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  gap: 2rem; 
-  align-items: center; 
-  height: 100%; 
-}
-
-.career .left { 
-  padding-right: 1rem; 
-}
-
-.iconbox {
-  width: 72px;  /* Iconos apenas más grandes */
-  height: 72px; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  margin-bottom: 1rem;
-  clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
-}
-
+/* Detalles de Carreras */
+.career { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; height: 100%; }
+.career .left { padding-right: 1rem; }
+.iconbox { width: 72px; height: 72px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%); }
 .iconbox svg { width: 36px; height: 36px; }
-
-/* Tarjetas pequeñas (Chips) */
 .chips { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1rem; }
 .chip { font-size: .85rem; border: 1px solid var(--line); color: var(--ink); padding: .4rem .8rem; border-radius: 4px; background: var(--bg0); font-weight: 500;}
 
-/* Estadísticas y métricas */
 .metrics { display: flex; gap: 1.8rem; margin-top: 1.2rem; }
 .metric b { display: block; font-size: 1.5rem; }
 .metric span { font-size: .85rem; color: var(--dim); font-weight: bold; }
-
 .statrow { display: flex; gap: 2.5rem; margin-top: 1.6rem; flex-wrap: wrap; }
 .stat { border-left: 3px solid var(--azul); padding-left: .9rem; }
 .stat b { display: block; font-size: 1.8rem; color: var(--ink); }
 .stat span { font-size: .85rem; color: var(--dim); font-weight: bold; }
 
-/* Panel derecho con arte abstracto animado */
-.rightpanel {
-  position: relative;
-  height: 75%;
-  border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg0); 
-}
+.rightpanel { position: relative; height: 75%; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; background: var(--bg0); }
 .rightpanel svg { width: 55%; height: 55%; opacity: .9; }
-
 .scanline { position: absolute; left: 0; right: 0; height: 2px; opacity: .5; animation: scan 3.5s linear infinite; }
 @keyframes scan { 0% { top: 4%; } 100% { top: 94%; } }
 
-
-/* --------------------------------------------------------------------------
-   9. COMPONENTES Y BOTONES
-   -------------------------------------------------------------------------- */
-.startbtn {
-  margin-top: 1.6rem;
-  border: 2px solid var(--azul); /* Borde más notorio */
-  color: var(--azul);
-  background: transparent;
-  padding: .8rem 1.8rem; /* Botón más gordo */
-  font-size: 1rem; /* Letra de botón más grande */
-  cursor: pointer;
-  letter-spacing: .05em;
-  font-weight: bold;
-  transition: all 0.2s ease;
-  border-radius: 4px;
+/* Botones */
+.startbtn, .planbtn {
+  display: inline-block; padding: .8rem 1.8rem; font-size: 1rem; font-weight: bold;
+  border-radius: 4px; cursor: pointer; transition: all 0.2s ease; text-decoration: none; text-align: center;
 }
-
+.startbtn { margin-top: 1.6rem; border: 2px solid var(--azul); color: var(--azul); background: transparent; letter-spacing: .05em; }
 .startbtn:hover { background: var(--azul); color: #ffffff; }
-
-.blueline { position: absolute; left: 8%; bottom: 14%; width: 160px; height: 2px; background: var(--azul); opacity: .5; }
-
-.planbtn {
-  display: inline-block;
-  margin-top: 1.3rem;
-  padding: .8rem 1.5rem;
-  font-size: .95rem; /* Texto más grande */
-  color: #ffffff; 
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 4px;
-}
+.planbtn { margin-top: 1.3rem; color: #ffffff; }
 .planbtn:hover { filter: brightness(1.1); }
-
+.blueline { position: absolute; left: 8%; bottom: 14%; width: 160px; height: 2px; background: var(--azul); opacity: .5; }
 .linklist a { color: var(--azul); text-decoration: none; display: block; margin: .6rem 0; font-size: 1rem; font-weight: bold; }
-.linklist a:hover { text-decoration: underline; }
 
-
-/* --------------------------------------------------------------------------
-   10. TEST DE ORIENTACIÓN (Quiz)
-   -------------------------------------------------------------------------- */
-.quizwrap { max-width: 640px; }
-
-/* Aumentar letra de la pregunta */
+/* Quiz */
+.quizwrap { max-width: 640px; margin-bottom: 2rem; }
 #quizBox p:not(.mono) { font-size: 1.25rem !important; font-weight: bold; color: var(--ink); margin-bottom: 1rem; }
-
-.opt {
-  display: block; width: 100%; text-align: left; background: var(--bg1);
-  border: 2px solid var(--line); color: var(--ink); padding: 1rem 1.2rem; /* Opciones más altas y amigables al tacto */
-  margin: .6rem 0; font-size: 1rem; cursor: pointer; border-radius: 6px; font-weight: 500;
-}
+.opt { display: block; width: 100%; text-align: left; background: var(--bg1); border: 2px solid var(--line); color: var(--ink); padding: 1rem 1.2rem; margin: .6rem 0; font-size: 1rem; cursor: pointer; border-radius: 6px; font-weight: 500; }
 .opt:hover { border-color: var(--azul); color: var(--azul); background: var(--bg0); }
 #quizResult { margin-top: 1rem; padding: 1.5rem; border-left: 4px solid var(--azul); display: none; background: var(--bg0); }
 
-
-/* --------------------------------------------------------------------------
-   11. NAVEGACIÓN (Flechas, Puntos, Barra de progreso)
-   -------------------------------------------------------------------------- */
-#nav { 
-  position: absolute; 
-  bottom: 5%; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  display: flex; 
-  gap: 12px; 
-  z-index: 5; 
-}
-
-.dot { 
-  width: 12px; height: 12px; border: 2px solid var(--azul); /* Puntos más visibles */
-  background: transparent; cursor: pointer; padding: 0; border-radius: 50%; 
-}
+/* Navegación Base */
+#nav { position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 5; }
+.dot { width: 12px; height: 12px; border: 2px solid var(--azul); background: transparent; cursor: pointer; padding: 0; border-radius: 50%; }
 .dot.on { background: var(--azul); }
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px; /* Flechas más grandes para cliquear fácil */
-  height: 50px;
-  border: 2px solid var(--line);
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--ink);
-  cursor: pointer;
-  font-size: 1.5rem;
-  z-index: 5;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; border: 2px solid var(--line); background: rgba(255, 255, 255, 0.9); color: var(--ink); cursor: pointer; font-size: 1.5rem; z-index: 5; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; }
 .arrow:hover { border-color: var(--azul); color: var(--azul); }
-
 #prev { left: 2%; }
 #next { right: 2%; }
-
 .progress { position: absolute; top: 0; left: 0; height: 4px; background: var(--azul); transition: width .4s ease; z-index: 5; }
 
-
 /* --------------------------------------------------------------------------
-   12. RESPONSIVE DESIGN (Móviles y Tablets)
+   RESPONSIVE DESIGN: MODO FOLLETO VERTICAL 9:16 (Móviles)
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
-  .hero-container {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 2rem;
+  /* Al romper los 900px, el contenedor pasa a ser la pantalla entera */
+  #deck {
+    aspect-ratio: auto;
+    height: 100dvh; /* Ocupa dinámicamente el alto del teléfono */
+    border: none;
+    border-radius: 0;
   }
-  .hero-visual {
-    display: flex; 
-    max-width: 220px;
+  
+  .slide { 
+    padding: 15% 6% 20% 6%; /* Más espacio arriba y abajo para que el texto respire */
   }
-  .blueline {
-    display: none;
+
+  .slide-content {
+    margin: 0; /* Permite que el contenido fluya desde arriba */
   }
-  .statrow {
-    justify-content: center;
+
+  .hero-container { flex-direction: column-reverse; text-align: center; gap: 2rem; margin-top: 1rem; }
+  .hero-visual { display: flex; max-width: 220px; min-height: auto;}
+  .blueline { display: none; }
+  .statrow { justify-content: center; gap: 1.5rem;}
+  #s0 .slide-content { align-items: center; }
+
+  /* Adaptación de la navegación para que no tape el texto en vertical */
+  .arrow {
+    top: auto;
+    bottom: 3%; /* Bajan junto a los puntos */
+    transform: none;
+    width: 45px; height: 45px;
   }
+  #prev { left: 5%; }
+  #next { right: 5%; }
+  #nav { bottom: 5%; }
+  
+  .idx { top: 4%; right: 5%; }
 }
 
 @media (max-width: 640px) {
-  .career { grid-template-columns: 1fr; }
+  .career { grid-template-columns: 1fr; gap: 1rem; }
   .rightpanel { display: none; }
   
-  .career-grid { 
-    grid-template-columns: 1fr; 
-    gap: 1rem; 
-  }
+  .career-grid { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem;}
+  
   .career-card { 
-    padding: 1.2rem; 
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1rem;
-    text-align: left;
+    padding: 1.2rem; flex-direction: row; align-items: center; justify-content: flex-start; gap: 1rem; text-align: left; 
   }
-  .career-card .iconbox {
-    margin: 0 !important;
-    width: 56px;
-    height: 56px;
+  .career-card .iconbox { margin: 0 !important; width: 56px; height: 56px; }
+  .career-card h3 { margin-top: 0 !important; }
+
+  /* Los botones ocupan todo el ancho del celular simulando una App */
+  .btn-block {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
   }
-  .arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
+  .mobile-btn-group { flex-direction: column; gap: 0.5rem; margin-bottom: 3rem;}
 }
