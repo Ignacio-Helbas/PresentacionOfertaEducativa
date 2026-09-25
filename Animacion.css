@@ -111,28 +111,34 @@ p.lead { color: var(--dim); max-width: 560px; line-height: 1.6; font-size: clamp
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 250px;
 }
 
 .utn-animated-logo {
   width: 100%;
-  max-width: 400px;
+  max-width: 320px;
   height: auto;
-  opacity: 0.9;
-  filter: drop-shadow(0 10px 20px rgba(2, 85, 123, 0.15));
+  filter: drop-shadow(0 10px 20px rgba(2, 85, 123, 0.2));
+  overflow: visible; 
 }
 
-.draw-line, .draw-arc {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  animation: drawFromCenter 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+.draw-path {
+  stroke-dasharray: 400; 
+  stroke-dashoffset: 400;
+  animation: utnDraw 2s ease-in-out forwards;
 }
 
-.draw-arc.delay {
+.draw-path.delay {
   animation-delay: 0.6s;
 }
 
-@keyframes drawFromCenter {
-  to { stroke-dashoffset: 0; }
+.draw-path.circle-delay {
+  animation-delay: 1.2s;
+}
+
+@keyframes utnDraw {
+  0% { stroke-dashoffset: 400; }
+  100% { stroke-dashoffset: 0; }
 }
 
 /* --- BOTONES Y COMPONENTES --- */
@@ -267,11 +273,16 @@ p.lead { color: var(--dim); max-width: 560px; line-height: 1.6; font-size: clamp
 /* --- RESPONSIVE (Celulares y Pantallas chicas) --- */
 @media (max-width: 900px) {
   .hero-container {
-    flex-direction: column;
-    text-align: left;
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 2rem;
   }
   .hero-visual {
-    display: none; 
+    display: flex; 
+    max-width: 200px;
+  }
+  .blueline {
+    display: none;
   }
 }
 
