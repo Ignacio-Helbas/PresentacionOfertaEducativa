@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>UTN San Rafael — Elegí tu ingeniería</title>
 <link rel="stylesheet" href="Animacion.css">
 </head>
@@ -14,87 +14,85 @@
   <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
   <div class="progress" id="progress"></div>
 
-  <!-- DIAPOSITIVA 0: Bienvenida e Institución con Logo Animado Fluido -->
+  <!-- DIAPOSITIVA 0: Bienvenida e Institución -->
   <div class="slide active" id="s0">
-    <span class="idx mono">00 / 07</span>
-    
-    <div class="hero-container">
-      <div class="hero-text">
-        <span class="tag mono">UTN · FACULTAD REGIONAL SAN RAFAEL</span>
-        <h1 class="big">Elegí tu<br>ingeniería.</h1>
-        <p class="lead">La única universidad nacional con eje en la ingeniería. Más de cinco décadas formando profesionales con sólida base científica y técnica, comprometidos con el desarrollo regional.</p>
-        
-        <div class="statrow">
-          <div class="stat"><b class="mono">1948</b><span>Fundación histórica</span></div>
-          <div class="stat"><b class="mono">04</b><span>Carreras de grado</span></div>
-          <div class="stat"><b class="mono">05</b><span>Años de duración</span></div>
+    <div class="slide-content">
+      <span class="idx mono">00 / 07</span>
+      
+      <div class="hero-container">
+        <div class="hero-text">
+          <span class="tag mono">UTN · FACULTAD REGIONAL SAN RAFAEL</span>
+          <h1 class="big">Elegí tu<br>ingeniería.</h1>
+          <p class="lead">La única universidad nacional con eje en la ingeniería. Más de cinco décadas formando profesionales con sólida base científica y técnica, comprometidos con el desarrollo regional.</p>
+          
+          <div class="statrow">
+            <div class="stat"><b class="mono">1948</b><span>Fundación histórica</span></div>
+            <div class="stat"><b class="mono">04</b><span>Carreras de grado</span></div>
+            <div class="stat"><b class="mono">05</b><span>Años de duración</span></div>
+          </div>
+
+          <button class="startbtn mono btn-block" style="margin-top: 2.5rem;" onclick="go(1)">EXPLORAR CARRERAS →</button>
         </div>
 
-        <button class="startbtn mono" style="margin-top: 2.5rem;" onclick="go(1)">EXPLORAR CARRERAS →</button>
+        <!-- Contenedor del Logo Animado UTN -->
+        <div class="hero-visual">
+          <svg class="utn-animated-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="var(--azul)" stroke-width="18" stroke-linecap="butt" fill="none">
+              <path class="draw-path" d="M 60 60 L 60 10" />
+              <path class="draw-path" d="M 60 60 L 60 110" />
+              <path class="draw-path delay-1" d="M 60 60 L 10 60" />
+              <path class="draw-path delay-1" d="M 60 60 L 110 60" />
+              <path class="draw-path delay-2" d="M 60 44 A 34 34 0 0 1 26 10" />
+              <path class="draw-path delay-2" d="M 60 44 A 34 34 0 0 0 94 10" />
+              <path class="draw-path delay-3" d="M 60 76 A 34 34 0 0 0 26 110" />
+              <path class="draw-path delay-3" d="M 60 76 A 34 34 0 0 1 94 110" />
+            </g>
+          </svg>
+        </div>
       </div>
-
-      <!-- Contenedor del Logo Animado UTN (Desde el Centro) -->
-      <div class="hero-visual">
-        <svg class="utn-animated-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <g stroke="var(--azul)" stroke-width="18" stroke-linecap="butt" fill="none">
-            
-            <!-- Eje vertical (nace en el centro y va hacia arriba/abajo) -->
-            <path class="draw-path" d="M 60 60 L 60 10" />
-            <path class="draw-path" d="M 60 60 L 60 110" />
-            
-            <!-- Eje horizontal (nace en el centro y va hacia los lados) -->
-            <path class="draw-path delay-1" d="M 60 60 L 10 60" />
-            <path class="draw-path delay-1" d="M 60 60 L 110 60" />
-            
-            <!-- Curva superior (nace en el medio inferior y sube a los lados) -->
-            <path class="draw-path delay-2" d="M 60 44 A 34 34 0 0 1 26 10" />
-            <path class="draw-path delay-2" d="M 60 44 A 34 34 0 0 0 94 10" />
-            
-            <!-- Curva inferior (nace en el medio superior y baja a los lados) -->
-            <path class="draw-path delay-3" d="M 60 76 A 34 34 0 0 0 26 110" />
-            <path class="draw-path delay-3" d="M 60 76 A 34 34 0 0 1 94 110" />
-            
-          </g>
-        </svg>
-      </div>
+      <div class="blueline"></div>
     </div>
-
-    <div class="blueline"></div>
   </div>
 
-  <!-- DIAPOSITIVA 1: Matriz 2x2 de Carreras -->
+  <!-- DIAPOSITIVA 1: Matriz de Carreras -->
   <div class="slide" id="s1">
-    <span class="idx mono">01 / 07</span>
-    <span class="tag mono">OFERTA ACADÉMICA</span>
-    <h1 class="big" style="font-size:clamp(1.5rem,3.4vw,2.2rem)">Seleccioná una especialidad</h1>
-    <!-- El contenedor de la matriz -->
-    <div id="career-grid" class="career-grid"></div>
+    <div class="slide-content" style="width: 100%;">
+      <span class="idx mono">01 / 07</span>
+      <span class="tag mono">OFERTA ACADÉMICA</span>
+      <h1 class="big" style="font-size:clamp(1.5rem,3.4vw,2.2rem)">Seleccioná una especialidad</h1>
+      <div id="career-grid" class="career-grid"></div>
+    </div>
   </div>
 
   <!-- DIAPOSITIVA 6: Test de orientación -->
   <div class="slide" id="s6">
-    <span class="idx mono">06 / 07</span>
-    <span class="tag mono">TEST DE ORIENTACIÓN</span>
-    <h1 class="big" style="font-size:clamp(1.5rem,3.4vw,2.2rem)">¿No sabés cuál elegir?</h1>
-    <div class="quizwrap">
-      <div id="quizBox"></div>
-      <div id="quizResult"></div>
+    <div class="slide-content" style="width: 100%;">
+      <span class="idx mono">06 / 07</span>
+      <span class="tag mono">TEST DE ORIENTACIÓN</span>
+      <h1 class="big" style="font-size:clamp(1.5rem,3.4vw,2.2rem)">¿No sabés cuál elegir?</h1>
+      <div class="quizwrap">
+        <div id="quizBox"></div>
+        <div id="quizResult"></div>
+      </div>
     </div>
   </div>
 
   <!-- DIAPOSITIVA 7: Contacto -->
   <div class="slide" id="s7">
-    <span class="idx mono">07 / 07</span>
-    <span class="tag mono">CONTACTO</span>
-    <h1 class="big" style="font-size:clamp(1.5rem,3.4vw,2.2rem)">Sumate a la próxima generación de ingenieros.</h1>
-    <p class="lead mono" style="font-size:.8rem">AV. JUSTO JOSÉ DE URQUIZA 314 · SAN RAFAEL, MENDOZA<br>+54 9 260 442-1078</p>
-    <div class="linklist">
-      <a href="https://www.frsr.utn.edu.ar/seminario-universitario" target="_blank" rel="noopener">→ Cómo inscribirse</a>
-      <a href="https://www.frsr.utn.edu.ar/" target="_blank" rel="noopener">→ Sitio oficial de la Facultad</a>
+    <div class="slide-content">
+      <span class="idx mono">07 / 07</span>
+      <span class="tag mono">CONTACTO</span>
+      <h1 class="big" style="font-size:clamp(1.5rem,3.4vw,2.2rem)">Sumate a la próxima generación de ingenieros.</h1>
+      <p class="lead mono" style="font-size:.8rem; margin-bottom: 2rem;">AV. JUSTO JOSÉ DE URQUIZA 314 · SAN RAFAEL, MENDOZA<br>+54 9 260 442-1078</p>
+      <div class="linklist">
+        <a href="https://www.frsr.utn.edu.ar/seminario-universitario" target="_blank" rel="noopener">→ Cómo inscribirse</a>
+        <a href="https://www.frsr.utn.edu.ar/" target="_blank" rel="noopener">→ Sitio oficial de la Facultad</a>
+      </div>
+      <button class="startbtn mono btn-block" style="margin-top:2rem" onclick="go(0)">← VOLVER AL INICIO</button>
     </div>
-    <button class="startbtn mono" style="margin-top:1.4rem" onclick="go(0)">← VOLVER AL INICIO</button>
   </div>
 
+  <!-- Controles de Navegación -->
   <button class="arrow" id="prev" onclick="step(-1)">‹</button>
   <button class="arrow" id="next" onclick="step(1)">›</button>
   <div id="nav"></div>
@@ -137,7 +135,7 @@ const deck = document.getElementById("deck");
 const gridEl = document.getElementById("career-grid");
 
 CAREERS.forEach((c, i) => {
-  // 1. Generar la tarjeta para la Matriz 2x2
+  // 1. Matriz 2x2
   const card = document.createElement("div");
   card.className = "career-card";
   card.style.borderColor = c.color;
@@ -150,86 +148,81 @@ CAREERS.forEach((c, i) => {
   card.onclick = () => go(i + 2);
   gridEl.appendChild(card);
 
-  // 2. Generar la diapositiva detallada de la carrera
+  // 2. Diapositiva Carrera
   const el = document.createElement("div");
   el.className = "slide"; 
   el.id = "career" + i;
   el.innerHTML = `
-    <span class="idx mono">0${i+2} / 07</span>
-    <span class="tag mono" style="color:${c.color}; font-size: 1.1rem; font-weight: bold;">CARRERA 0${i+1} · ${c.years.toUpperCase()}</span>
-    <div class="career">
-      <div class="left">
-        <div class="iconbox" style="background:${c.color}"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">${c.path}</svg></div>
-        <h1 class="big" style="font-size:clamp(1.3rem,2.6vw,1.9rem)">${c.name}</h1>
-        <p class="lead">${c.desc}</p>
-        <div class="metrics">
-          <div class="metric"><b class="mono" style="color:${c.color}">${c.years}</b><span>Duración</span></div>
-          <div class="metric"><b class="mono" style="color:${c.color}">${c.hours}</b><span>Carga horaria</span></div>
+    <div class="slide-content">
+      <span class="idx mono">0${i+2} / 07</span>
+      <span class="tag mono" style="color:${c.color}; font-size: 1.1rem; font-weight: bold;">CARRERA 0${i+1} · ${c.years.toUpperCase()}</span>
+      <div class="career">
+        <div class="left">
+          <div class="iconbox" style="background:${c.color}"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">${c.path}</svg></div>
+          <h1 class="big" style="font-size:clamp(1.5rem,2.6vw,1.9rem)">${c.name}</h1>
+          <p class="lead">${c.desc}</p>
+          <div class="metrics">
+            <div class="metric"><b class="mono" style="color:${c.color}">${c.years}</b><span>Duración</span></div>
+            <div class="metric"><b class="mono" style="color:${c.color}">${c.hours}</b><span>Carga horaria</span></div>
+          </div>
+          <div class="chips">${c.chips.map(x=>`<span class="chip">${x}</span>`).join("")}</div>
+          
+          <div class="mobile-btn-group" style="display:flex; gap:10px; margin-top:1.8rem; flex-wrap: wrap;">
+              <a class="planbtn mono btn-block" style="background:${c.color}" href="${c.plan}" target="_blank" rel="noopener">VER PLAN ↗</a>
+              <button class="startbtn mono btn-block" style="margin-top:0; border-color:${c.color}; color:${c.color}" onclick="go(1)">← VOLVER</button>
+          </div>
         </div>
-        <div class="chips">${c.chips.map(x=>`<span class="chip">${x}</span>`).join("")}</div>
-        
-        <div style="display:flex; gap:10px; margin-top:1.3rem; flex-wrap: wrap;">
-            <a class="planbtn mono" style="background:${c.color}" href="${c.plan}" target="_blank" rel="noopener">VER PLAN ↗</a>
-            <button class="startbtn mono" style="margin-top:0; border-color:${c.color}; color:${c.color}" onclick="go(1)">← VOLVER</button>
+        <div class="rightpanel" style="border-color:${c.color}66">
+          <div class="scanline" style="background:${c.color}"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="${c.color}" stroke-width="1.2" opacity="0.9">${c.path}</svg>
         </div>
-      </div>
-      <div class="rightpanel" style="border-color:${c.color}66">
-        <div class="scanline" style="background:${c.color}"></div>
-        <svg viewBox="0 0 24 24" fill="none" stroke="${c.color}" stroke-width="1.2" opacity="0.9">${c.path}</svg>
       </div>
     </div>`;
   deck.insertBefore(el, document.getElementById("s6"));
 });
 
-// Inicialización de las diapositivas
 const slides=[...document.querySelectorAll(".slide")];
 const navEl=document.getElementById("nav");
-
 slides.forEach((s,i)=>{
   const d=document.createElement("button");
   d.className="dot"; d.setAttribute("aria-label","Ir a diapositiva "+(i+1));
   d.addEventListener("click",()=>go(i));
   navEl.appendChild(d);
 });
-
 let cur=0;
-
 function render(){
   slides.forEach((s,i)=>{
     s.classList.toggle("active",i===cur);
     s.classList.toggle("left",i<cur);
+    // Vuelve el scroll arriba cuando cambias de diapositiva
+    if(i===cur) s.scrollTop = 0; 
   });
   [...navEl.children].forEach((d,i)=>d.classList.toggle("on",i===cur));
   document.getElementById("progress").style.width=((cur+1)/slides.length*100)+"%";
 }
-
-function go(i){
-  cur=Math.max(0,Math.min(slides.length-1,i));
-  render();
-}
-
-function step(d){
-  go(cur+d);
-}
-
+function go(i){cur=Math.max(0,Math.min(slides.length-1,i));render()}
+function step(d){go(cur+d)}
 document.addEventListener("keydown",e=>{
   if(e.key==="ArrowRight")step(1);
   if(e.key==="ArrowLeft")step(-1);
 });
-
-let touchX=null;
-deck.addEventListener("touchstart",e=>touchX=e.touches[0].clientX);
-deck.addEventListener("touchend",e=>{
-  if(touchX===null)return;
-  const dx=e.changedTouches[0].clientX-touchX;
-  if(Math.abs(dx)>50)step(dx<0?1:-1);
-  touchX=null;
+let touchX=null; let touchY=null;
+deck.addEventListener("touchstart",e=>{
+  touchX=e.touches[0].clientX;
+  touchY=e.touches[0].clientY;
 });
-
-// Render inicial
+deck.addEventListener("touchend",e=>{
+  if(touchX===null || touchY===null)return;
+  const dx=e.changedTouches[0].clientX-touchX;
+  const dy=e.changedTouches[0].clientY-touchY;
+  // Solo cambiamos de diapositiva si el swipe fue más horizontal que vertical (para no entorpecer el scroll de lectura)
+  if(Math.abs(dx) > Math.abs(dy) && Math.abs(dx)>50){
+    step(dx<0?1:-1);
+  }
+  touchX=null; touchY=null;
+});
 render();
 
-// Lógica del Quiz / Test
 const QUESTIONS=[
  {q:"¿Qué te gusta más?",
   opts:[{t:"Programar y resolver problemas lógicos",w:{sistemas:2}},
@@ -249,7 +242,6 @@ const QUESTIONS=[
 ];
 let answers=[]; let qIndex=0;
 const quizBox=document.getElementById("quizBox");
-
 function renderQuestion(){
   if(qIndex>=QUESTIONS.length){showResult();return}
   const q=QUESTIONS[qIndex];
@@ -263,7 +255,6 @@ function renderQuestion(){
     });
   });
 }
-
 function showResult(){
   const totals={sistemas:0,civil:0,electro:0,industrial:0};
   answers.forEach(w=>{for(const k in w)totals[k]+=w[k]});
@@ -276,14 +267,7 @@ function showResult(){
   res.style.borderColor=c.color;
   res.innerHTML=`<span class="mono" style="font-size:.7rem;color:${c.color}">RESULTADO</span><br><b>${c.name}</b><br><span style="color:var(--dim);font-size:.85rem">${c.tag}</span>`;
 }
-
-function restartQuiz(){
-  answers=[];
-  qIndex=0;
-  document.getElementById("quizResult").style.display="none";
-  renderQuestion();
-}
-
+function restartQuiz(){answers=[];qIndex=0;document.getElementById("quizResult").style.display="none";renderQuestion()}
 renderQuestion();
 </script>
 </body>
