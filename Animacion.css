@@ -1,3 +1,11 @@
+/* ==========================================================================
+   UTN SAN RAFAEL - MUESTRA EDUCATIVA
+   Hoja de Estilos Principal (Animacion.css)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES Y PALETA DE COLORES
+   -------------------------------------------------------------------------- */
 :root {
   /* Paleta Light Mode */
   --ink: #1e293b;         /* Texto oscuro principal */
@@ -6,7 +14,7 @@
   --bg0: #f1f5f9;         /* Fondo exterior (gris muy clarito) */
   --bg1: #ffffff;         /* Fondo interior de las pantallas (blanco) */
   
-  /* Colores de las carreras */
+  /* Colores Oficiales de las Carreras */
   --civil: #ea5437; 
   --electro: #55749a; 
   --industrial: #7a8216; 
@@ -16,8 +24,17 @@
   --azul: #02557b;
 }
 
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+
+/* --------------------------------------------------------------------------
+   2. RESET Y CONFIGURACIÓN BASE
+   -------------------------------------------------------------------------- */
+* { 
+  box-sizing: border-box; 
+}
+
+html, body { 
+  height: 100%; 
+}
 
 body {
   margin: 0;
@@ -25,11 +42,13 @@ body {
   background: var(--bg0);
   color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
-  overflow: hidden;
+  overflow: hidden; /* Evita el scroll nativo */
 }
 
-.mono { font-family: "Courier New", monospace; letter-spacing: .08em; }
 
+/* --------------------------------------------------------------------------
+   3. CONTENEDORES PRINCIPALES (Stage & Deck)
+   -------------------------------------------------------------------------- */
 #stage {
   position: fixed;
   inset: 0;
@@ -50,6 +69,7 @@ body {
   box-shadow: 0 20px 50px rgba(0,0,0,0.1); 
 }
 
+/* Grilla de fondo (Patrón de puntos) */
 .bpgrid {
   position: absolute;
   inset: 0;
@@ -59,12 +79,17 @@ body {
   opacity: .5;
 }
 
+/* Esquineros decorativos azules */
 .corner { position: absolute; width: 26px; height: 26px; border: 2px solid var(--azul); opacity: .7; pointer-events: none; }
 .corner.tl { top: 14px; left: 14px; border-right: none; border-bottom: none; }
 .corner.tr { top: 14px; right: 14px; border-left: none; border-bottom: none; }
 .corner.bl { bottom: 14px; left: 14px; border-right: none; border-top: none; }
 .corner.br { bottom: 14px; right: 14px; border-left: none; border-top: none; }
 
+
+/* --------------------------------------------------------------------------
+   4. DIAPOSITIVAS (Slides) - ESTRUCTURA GENERAL
+   -------------------------------------------------------------------------- */
 .slide {
   position: absolute;
   inset: 0;
@@ -77,142 +102,123 @@ body {
   transition: opacity .5s ease, transform .5s ease;
   pointer-events: none;
 }
-.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
-.slide.left { transform: translateX(-40px); }
 
-.tag { display: inline-flex; align-items: center; gap: 8px; font-size: .72rem; color: var(--azul); margin-bottom: 1rem; }
-.tag::before { content: ""; width: 24px; height: 1px; background: var(--azul); }
+.slide.active { 
+  opacity: 1; 
+  transform: translateX(0); 
+  pointer-events: auto; 
+}
 
-h1.big { font-size: clamp(1.9rem, 5vw, 3.6rem); margin: 0 0 .6rem; font-weight: 800; line-height: 1.05; }
-p.lead { color: var(--dim); max-width: 560px; line-height: 1.6; font-size: clamp(.85rem, 1.3vw, 1rem); }
-.idx { position: absolute; top: 6%; right: 8%; font-size: .75rem; color: var(--dim); }
+.slide.left { 
+  transform: translateX(-40px); 
+}
 
-/* Ajustes de alineación de secciones */
+/* Alineaciones específicas */
 #s0 { align-items: flex-start; }
-#s1 { align-items: center; text-align: center; } /* Centra el menú de carreras */
+#s1 { align-items: center; text-align: center; } /* Centra el menú de la grilla */
 
-/* Animación de Trazos del Logo Oficial */
+
+/* --------------------------------------------------------------------------
+   5. TIPOGRAFÍA Y TEXTOS GLOBALES
+   -------------------------------------------------------------------------- */
+.mono { 
+  font-family: "Courier New", monospace; 
+  letter-spacing: .08em; 
+}
+
+h1.big { 
+  font-size: clamp(1.9rem, 5vw, 3.6rem); 
+  margin: 0 0 .6rem; 
+  font-weight: 800; 
+  line-height: 1.05; 
+}
+
+p.lead { 
+  color: var(--dim); 
+  max-width: 560px; 
+  line-height: 1.6; 
+  font-size: clamp(.85rem, 1.3vw, 1rem); 
+}
+
+.tag { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 8px; 
+  font-size: .72rem; 
+  color: var(--azul); 
+  margin-bottom: 1rem; 
+}
+
+.tag::before { 
+  content: ""; 
+  width: 24px; 
+  height: 1px; 
+  background: var(--azul); 
+}
+
+.idx { 
+  position: absolute; 
+  top: 6%; 
+  right: 8%; 
+  font-size: .75rem; 
+  color: var(--dim); 
+}
+
+
+/* --------------------------------------------------------------------------
+   6. DIAPOSITIVA 0: PANTALLA PRINCIPAL Y LOGO ANIMADO UTN
+   -------------------------------------------------------------------------- */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px;
+}
+
+.utn-animated-logo {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(2, 85, 123, 0.2));
+  overflow: visible; 
+}
+
+/* Animación: Dibujo desde el centro hacia afuera */
 .draw-path {
-  stroke-dasharray: 400; 
-  stroke-dashoffset: 400;
-  animation: utnDraw 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  stroke-dasharray: 200; /* Reducido porque los trazos ahora son a la mitad */
+  stroke-dashoffset: 200;
+  animation: utnDraw 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* Secuencia de dibujo para cada pieza */
-.draw-path.delay-1 {
-  animation-delay: 0.3s;
-}
-.draw-path.delay-2 {
-  animation-delay: 0.6s;
-}
-.draw-path.delay-3 {
-  animation-delay: 0.9s;
-}
+/* Orden en el que se disparan las líneas desde el centro */
+.draw-path.delay-1 { animation-delay: 0.2s; }
+.draw-path.delay-2 { animation-delay: 0.4s; }
+.draw-path.delay-3 { animation-delay: 0.6s; }
 
 @keyframes utnDraw {
-  0% { stroke-dashoffset: 400; }
+  0% { stroke-dashoffset: 200; }
   100% { stroke-dashoffset: 0; }
 }
 
-/* --- BOTONES Y COMPONENTES --- */
-.startbtn {
-  margin-top: 1.6rem;
-  border: 1px solid var(--azul);
-  color: var(--azul);
-  background: transparent;
-  padding: .7rem 1.6rem;
-  font-size: .85rem;
-  cursor: pointer;
-  letter-spacing: .05em;
-  font-weight: bold;
-  transition: all 0.2s ease;
-}
-.startbtn:hover { background: var(--azul); color: #ffffff; }
-.blueline { position: absolute; left: 8%; bottom: 14%; width: 160px; height: 1px; background: var(--azul); opacity: .5; }
 
-.statrow { display: flex; gap: 2.2rem; margin-top: 1.6rem; flex-wrap: wrap; }
-.stat { border-left: 2px solid var(--azul); padding-left: .7rem; }
-.stat b { display: block; font-size: 1.6rem; color: var(--ink); }
-.stat span { font-size: .72rem; color: var(--dim); }
-
-.career { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; height: 100%; }
-.career .left { padding-right: 1rem; }
-.iconbox {
-  width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
-  clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
-}
-.iconbox svg { width: 32px; height: 32px; }
-
-.chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
-.chip { font-size: .68rem; border: 1px solid var(--line); color: var(--dim); padding: .3rem .6rem; border-radius: 4px; background: var(--bg0); }
-
-.metrics { display: flex; gap: 1.4rem; margin-top: 1.2rem; }
-.metric b { display: block; font-size: 1.3rem; }
-.metric span { font-size: .68rem; color: var(--dim); }
-
-.planbtn {
-  display: inline-block;
-  margin-top: 1.3rem;
-  padding: .6rem 1.1rem;
-  font-size: .8rem;
-  color: #ffffff; 
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.planbtn:hover { filter: brightness(1.1); }
-
-.rightpanel {
-  position: relative;
-  height: 75%;
-  border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg0); 
-}
-.rightpanel svg { width: 55%; height: 55%; opacity: .9; }
-.scanline { position: absolute; left: 0; right: 0; height: 2px; opacity: .5; animation: scan 3.5s linear infinite; }
-@keyframes scan { 0% { top: 4%; } 100% { top: 94%; } }
-
-.quizwrap { max-width: 640px; }
-.opt {
-  display: block; width: 100%; text-align: left; background: var(--bg1);
-  border: 1px solid var(--line); color: var(--ink); padding: .75rem 1rem;
-  margin: .45rem 0; font-size: .85rem; cursor: pointer; border-radius: 4px;
-}
-.opt:hover { border-color: var(--azul); color: var(--azul); background: var(--bg0); }
-#quizResult { margin-top: 1rem; padding: 1rem; border-left: 3px solid var(--azul); display: none; background: var(--bg0); }
-
-.linklist a { color: var(--azul); text-decoration: none; display: block; margin: .4rem 0; font-size: .85rem; font-weight: bold; }
-.linklist a:hover { text-decoration: underline; }
-
-#nav { position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 5; }
-.dot { width: 9px; height: 9px; border: 1px solid var(--azul); background: transparent; cursor: pointer; padding: 0; border-radius: 50%; }
-.dot.on { background: var(--azul); }
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--ink);
-  cursor: pointer;
-  font-size: 1.1rem;
-  z-index: 5;
-  border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-.arrow:hover { border-color: var(--azul); color: var(--azul); }
-#prev { left: 1.2%; }
-#next { right: 1.2%; }
-
-.progress { position: absolute; top: 0; left: 0; height: 3px; background: var(--azul); transition: width .4s ease; z-index: 5; }
-
-/* --- ESTILOS DE LA MATRIZ DE CARRERAS (Grid 2x2) --- */
+/* --------------------------------------------------------------------------
+   7. DIAPOSITIVA 1: MATRIZ DE CARRERAS (Grid 2x2)
+   -------------------------------------------------------------------------- */
 .career-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -243,19 +249,173 @@ p.lead { color: var(--dim); max-width: 560px; line-height: 1.6; font-size: clamp
   box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
-/* --- RESPONSIVE (Celulares y Pantallas chicas) --- */
+
+/* --------------------------------------------------------------------------
+   8. DIAPOSITIVAS DE CARRERAS (Detalles, Iconos, Métricas)
+   -------------------------------------------------------------------------- */
+.career { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 2rem; 
+  align-items: center; 
+  height: 100%; 
+}
+
+.career .left { 
+  padding-right: 1rem; 
+}
+
+.iconbox {
+  width: 64px; 
+  height: 64px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  margin-bottom: 1rem;
+  clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
+}
+
+.iconbox svg { width: 32px; height: 32px; }
+
+/* Tarjetas pequeñas (Chips) de cualidades */
+.chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
+.chip { font-size: .68rem; border: 1px solid var(--line); color: var(--dim); padding: .3rem .6rem; border-radius: 4px; background: var(--bg0); }
+
+/* Estadísticas y métricas */
+.metrics { display: flex; gap: 1.4rem; margin-top: 1.2rem; }
+.metric b { display: block; font-size: 1.3rem; }
+.metric span { font-size: .68rem; color: var(--dim); }
+
+.statrow { display: flex; gap: 2.2rem; margin-top: 1.6rem; flex-wrap: wrap; }
+.stat { border-left: 2px solid var(--azul); padding-left: .7rem; }
+.stat b { display: block; font-size: 1.6rem; color: var(--ink); }
+.stat span { font-size: .72rem; color: var(--dim); }
+
+/* Panel derecho (Arte abstracto animado) */
+.rightpanel {
+  position: relative;
+  height: 75%;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg0); 
+}
+.rightpanel svg { width: 55%; height: 55%; opacity: .9; }
+
+.scanline { position: absolute; left: 0; right: 0; height: 2px; opacity: .5; animation: scan 3.5s linear infinite; }
+@keyframes scan { 0% { top: 4%; } 100% { top: 94%; } }
+
+
+/* --------------------------------------------------------------------------
+   9. COMPONENTES Y BOTONES
+   -------------------------------------------------------------------------- */
+.startbtn {
+  margin-top: 1.6rem;
+  border: 1px solid var(--azul);
+  color: var(--azul);
+  background: transparent;
+  padding: .7rem 1.6rem;
+  font-size: .85rem;
+  cursor: pointer;
+  letter-spacing: .05em;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.startbtn:hover { background: var(--azul); color: #ffffff; }
+
+.blueline { position: absolute; left: 8%; bottom: 14%; width: 160px; height: 1px; background: var(--azul); opacity: .5; }
+
+.planbtn {
+  display: inline-block;
+  margin-top: 1.3rem;
+  padding: .6rem 1.1rem;
+  font-size: .8rem;
+  color: #ffffff; 
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+}
+.planbtn:hover { filter: brightness(1.1); }
+
+.linklist a { color: var(--azul); text-decoration: none; display: block; margin: .4rem 0; font-size: .85rem; font-weight: bold; }
+.linklist a:hover { text-decoration: underline; }
+
+
+/* --------------------------------------------------------------------------
+   10. TEST DE ORIENTACIÓN (Quiz)
+   -------------------------------------------------------------------------- */
+.quizwrap { max-width: 640px; }
+.opt {
+  display: block; width: 100%; text-align: left; background: var(--bg1);
+  border: 1px solid var(--line); color: var(--ink); padding: .75rem 1rem;
+  margin: .45rem 0; font-size: .85rem; cursor: pointer; border-radius: 4px;
+}
+.opt:hover { border-color: var(--azul); color: var(--azul); background: var(--bg0); }
+#quizResult { margin-top: 1rem; padding: 1rem; border-left: 3px solid var(--azul); display: none; background: var(--bg0); }
+
+
+/* --------------------------------------------------------------------------
+   11. NAVEGACIÓN (Flechas, Puntos, Barra de progreso)
+   -------------------------------------------------------------------------- */
+#nav { 
+  position: absolute; 
+  bottom: 5%; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  display: flex; 
+  gap: 10px; 
+  z-index: 5; 
+}
+
+.dot { 
+  width: 9px; height: 9px; border: 1px solid var(--azul); 
+  background: transparent; cursor: pointer; padding: 0; border-radius: 50%; 
+}
+.dot.on { background: var(--azul); }
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 1.1rem;
+  z-index: 5;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.arrow:hover { border-color: var(--azul); color: var(--azul); }
+
+#prev { left: 1.2%; }
+#next { right: 1.2%; }
+
+.progress { position: absolute; top: 0; left: 0; height: 3px; background: var(--azul); transition: width .4s ease; z-index: 5; }
+
+
+/* --------------------------------------------------------------------------
+   12. RESPONSIVE DESIGN (Móviles y Tablets)
+   -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .hero-container {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse; /* Pone el logo arriba del texto */
     text-align: center;
     gap: 2rem;
   }
   .hero-visual {
     display: flex; 
-    max-width: 200px;
+    max-width: 180px; /* Logo más chico en tablets */
   }
   .blueline {
     display: none;
+  }
+  .statrow {
+    justify-content: center;
   }
 }
 
