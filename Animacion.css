@@ -216,3 +216,53 @@ p.lead { color: var(--dim); max-width: 560px; line-height: 1.6; font-size: clamp
   body { padding-top: 70px; }
   #stage { top: 70px; }
 }
+
+/* --- ESTILOS DE LA MATRIZ DE CARRERAS (Grid 2x2) --- */
+.career-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+.career-card {
+  background: var(--bg1);
+  border: 2px solid;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 6px var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Animación cuando pasas el mouse (Se hace grande y resalta) */
+.career-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 640px) {
+  .career-grid { 
+    grid-template-columns: 1fr; /* En celulares se pone una abajo de la otra */
+    gap: 1rem; 
+  }
+  .career-card { 
+    padding: 1.2rem; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    text-align: left;
+  }
+  .career-card .iconbox {
+    margin: 0 !important;
+    width: 48px;
+    height: 48px;
+  }
+}
