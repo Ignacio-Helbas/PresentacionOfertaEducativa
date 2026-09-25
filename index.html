@@ -8,11 +8,6 @@
 </head>
 <body>
 
-<!-- Encabezado Azul UTN con Logo SASE -->
-<header class="topbar">
-  <img src="https://sase.ar/wp-content/uploads/2026/08/01-Lg-FRSR-SASE-2026.png" alt="Logo FRSR SASE" class="topbar-logo">
-</header>
-
 <div id="stage">
 <div id="deck">
   <div class="bpgrid"></div>
@@ -105,9 +100,10 @@ const deck=document.getElementById("deck");
 CAREERS.forEach((c,i)=>{
   const el=document.createElement("div");
   el.className="slide"; el.id="career"+i;
+  // AQUI SE MODIFICO EL TAMAÑO DE LA ETIQUETA DE CARRERA (font-size: 1.1rem; font-weight: bold;)
   el.innerHTML=`
     <span class="idx mono">0${i+2} / 07</span>
-    <span class="tag mono" style="color:${c.color}">CARRERA 0${i+1} · ${c.years.toUpperCase()}</span>
+    <span class="tag mono" style="color:${c.color}; font-size: 1.1rem; font-weight: bold;">CARRERA 0${i+1} · ${c.years.toUpperCase()}</span>
     <div class="career">
       <div class="left">
         <div class="iconbox" style="background:${c.color}"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">${c.path}</svg></div>
