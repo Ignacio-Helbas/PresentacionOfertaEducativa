@@ -14,7 +14,7 @@
   <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
   <div class="progress" id="progress"></div>
 
-  <!-- DIAPOSITIVA 0: Bienvenida e Institución con Logo Animado -->
+  <!-- DIAPOSITIVA 0: Bienvenida e Institución con Logo Animado Fluido -->
   <div class="slide active" id="s0">
     <span class="idx mono">00 / 07</span>
     
@@ -33,7 +33,7 @@
         <button class="startbtn mono" style="margin-top: 2.5rem;" onclick="go(1)">EXPLORAR CARRERAS →</button>
       </div>
 
-     <!-- Contenedor del Logo Animado UTN (Desde el Centro) -->
+      <!-- Contenedor del Logo Animado UTN (Desde el Centro) -->
       <div class="hero-visual">
         <svg class="utn-animated-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
           <g stroke="var(--azul)" stroke-width="18" stroke-linecap="butt" fill="none">
@@ -57,6 +57,7 @@
           </g>
         </svg>
       </div>
+    </div>
 
     <div class="blueline"></div>
   </div>
@@ -180,15 +181,19 @@ CAREERS.forEach((c, i) => {
   deck.insertBefore(el, document.getElementById("s6"));
 });
 
+// Inicialización de las diapositivas
 const slides=[...document.querySelectorAll(".slide")];
 const navEl=document.getElementById("nav");
+
 slides.forEach((s,i)=>{
   const d=document.createElement("button");
   d.className="dot"; d.setAttribute("aria-label","Ir a diapositiva "+(i+1));
   d.addEventListener("click",()=>go(i));
   navEl.appendChild(d);
 });
+
 let cur=0;
+
 function render(){
   slides.forEach((s,i)=>{
     s.classList.toggle("active",i===cur);
@@ -197,12 +202,21 @@ function render(){
   [...navEl.children].forEach((d,i)=>d.classList.toggle("on",i===cur));
   document.getElementById("progress").style.width=((cur+1)/slides.length*100)+"%";
 }
-function go(i){cur=Math.max(0,Math.min(slides.length-1,i));render()}
-function step(d){go(cur+d)}
+
+function go(i){
+  cur=Math.max(0,Math.min(slides.length-1,i));
+  render();
+}
+
+function step(d){
+  go(cur+d);
+}
+
 document.addEventListener("keydown",e=>{
   if(e.key==="ArrowRight")step(1);
   if(e.key==="ArrowLeft")step(-1);
 });
+
 let touchX=null;
 deck.addEventListener("touchstart",e=>touchX=e.touches[0].clientX);
 deck.addEventListener("touchend",e=>{
@@ -211,8 +225,11 @@ deck.addEventListener("touchend",e=>{
   if(Math.abs(dx)>50)step(dx<0?1:-1);
   touchX=null;
 });
+
+// Render inicial
 render();
 
+// Lógica del Quiz / Test
 const QUESTIONS=[
  {q:"¿Qué te gusta más?",
   opts:[{t:"Programar y resolver problemas lógicos",w:{sistemas:2}},
@@ -232,6 +249,7 @@ const QUESTIONS=[
 ];
 let answers=[]; let qIndex=0;
 const quizBox=document.getElementById("quizBox");
+
 function renderQuestion(){
   if(qIndex>=QUESTIONS.length){showResult();return}
   const q=QUESTIONS[qIndex];
@@ -245,6 +263,7 @@ function renderQuestion(){
     });
   });
 }
+
 function showResult(){
   const totals={sistemas:0,civil:0,electro:0,industrial:0};
   answers.forEach(w=>{for(const k in w)totals[k]+=w[k]});
@@ -257,7 +276,14 @@ function showResult(){
   res.style.borderColor=c.color;
   res.innerHTML=`<span class="mono" style="font-size:.7rem;color:${c.color}">RESULTADO</span><br><b>${c.name}</b><br><span style="color:var(--dim);font-size:.85rem">${c.tag}</span>`;
 }
-function restartQuiz(){answers=[];qIndex=0;document.getElementById("quizResult").style.display="none";renderQuestion()}
+
+function restartQuiz(){
+  answers=[];
+  qIndex=0;
+  document.getElementById("quizResult").style.display="none";
+  renderQuestion();
+}
+
 renderQuestion();
 </script>
 </body>
