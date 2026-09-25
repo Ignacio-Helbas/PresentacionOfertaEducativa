@@ -33,23 +33,26 @@
         <button class="startbtn mono" style="margin-top: 2.5rem;" onclick="go(1)">EXPLORAR CARRERAS →</button>
       </div>
 
-     <!-- Contenedor del Logo Animado UTN (La "Araña" Oficial) -->
+     <!-- Contenedor del Logo Animado UTN (Desde el Centro) -->
       <div class="hero-visual">
         <svg class="utn-animated-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <!-- stroke-width="18" y stroke-linecap="butt" le dan el grosor y corte recto del logo original -->
           <g stroke="var(--azul)" stroke-width="18" stroke-linecap="butt" fill="none">
             
-            <!-- Eje vertical -->
-            <path class="draw-path" d="M 60 10 L 60 110" />
+            <!-- Eje vertical (nace en el centro y va hacia arriba/abajo) -->
+            <path class="draw-path" d="M 60 60 L 60 10" />
+            <path class="draw-path" d="M 60 60 L 60 110" />
             
-            <!-- Eje horizontal -->
-            <path class="draw-path delay-1" d="M 10 60 L 110 60" />
+            <!-- Eje horizontal (nace en el centro y va hacia los lados) -->
+            <path class="draw-path delay-1" d="M 60 60 L 10 60" />
+            <path class="draw-path delay-1" d="M 60 60 L 110 60" />
             
-            <!-- Curva superior (U) -->
-            <path class="draw-path delay-2" d="M 26 10 A 34 34 0 0 0 94 10" />
+            <!-- Curva superior (nace en el medio inferior y sube a los lados) -->
+            <path class="draw-path delay-2" d="M 60 44 A 34 34 0 0 1 26 10" />
+            <path class="draw-path delay-2" d="M 60 44 A 34 34 0 0 0 94 10" />
             
-            <!-- Curva inferior (Invertida) -->
-            <path class="draw-path delay-3" d="M 26 110 A 34 34 0 0 1 94 110" />
+            <!-- Curva inferior (nace en el medio superior y baja a los lados) -->
+            <path class="draw-path delay-3" d="M 60 76 A 34 34 0 0 0 26 110" />
+            <path class="draw-path delay-3" d="M 60 76 A 34 34 0 0 1 94 110" />
             
           </g>
         </svg>
