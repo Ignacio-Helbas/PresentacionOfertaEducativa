@@ -266,3 +266,15 @@ p.lead { color: var(--dim); max-width: 560px; line-height: 1.6; font-size: clamp
     height: 48px;
   }
 }
+
+/* --- Centrar la diapositiva de Selección de Especialidad --- */
+#s1 {
+  align-items: center;
+  text-align: center;
+}
+
+/* Opcional: Asegurarnos de que la grilla ocupe bien el centro */
+.career-grid {
+  margin-left: auto;
+  margin-right: auto;
+}
