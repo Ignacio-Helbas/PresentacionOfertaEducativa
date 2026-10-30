@@ -25,6 +25,11 @@
 <meta name="twitter:description" content="Presentación interactiva de las carreras de grado de la UTN Facultad Regional San Rafael. Conocé la oferta académica, duración y planes de estudio.">
 <meta name="twitter:image" content="https://ignacio-helbas.github.io/PresentacionOfertaEducativa/imagenes/og-portada.png">
 
+<!-- Google Fonts: Lexend (UTN FRSR v2.0) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="Animacion.css">
 </head>
 <body>
@@ -34,6 +39,11 @@
   <div class="bpgrid"></div>
   <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
   <div class="progress" id="progress"></div>
+
+  <!-- Header Oficial con Logo UTN San Rafael: 03-insignia-azul -->
+  <div class="deck-header" id="deck-header">
+    <img src="imagenes/logos/03-insignia-azul.png" alt="UTN San Rafael" class="insignia-header-img" onclick="go(0)" title="Volver al inicio">
+  </div>
 
   <!-- DIAPOSITIVA 0: Bienvenida e Institución -->
   <div class="slide active" id="s0">
@@ -52,26 +62,14 @@
             <div class="stat"><b class="mono">05</b><span>Años de duración</span></div>
           </div>
 
-          <button class="startbtn mono btn-block hero-btn" onclick="go(1)">EXPLORAR CARRERAS →</button>
+          <button class="startbtn btn-cta mono btn-block hero-btn" onclick="go(1)">EXPLORAR CARRERAS →</button>
         </div>
 
-        <!-- Contenedor del Logo Animado UTN -->
+        <!-- Logo Oficial UTN FRSR v2.0: 01-principal-color -->
         <div class="hero-visual">
-          <svg class="utn-animated-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <g stroke="var(--azul)" stroke-width="18" stroke-linecap="butt" fill="none">
-              <path class="draw-path" d="M 60 60 L 60 10" />
-              <path class="draw-path" d="M 60 60 L 60 110" />
-              <path class="draw-path delay-1" d="M 60 60 L 10 60" />
-              <path class="draw-path delay-1" d="M 60 60 L 110 60" />
-              <path class="draw-path delay-2" d="M 60 44 A 34 34 0 0 1 26 10" />
-              <path class="draw-path delay-2" d="M 60 44 A 34 34 0 0 0 94 10" />
-              <path class="draw-path delay-3" d="M 60 76 A 34 34 0 0 0 26 110" />
-              <path class="draw-path delay-3" d="M 60 76 A 34 34 0 0 1 94 110" />
-            </g>
-          </svg>
+          <img src="imagenes/logos/01-principal-color.png" alt="UTN Facultad Regional San Rafael" class="hero-logo-img">
         </div>
       </div>
-      <div class="blueline"></div>
     </div>
   </div>
 
@@ -109,14 +107,30 @@
         Desde el <strong>13 de noviembre al 28 de diciembre</strong> estarán abiertas las inscripciones para cursar el ingreso universitario desde el <strong>18 de enero hasta fines del mes de febrero</strong>.
       </p>
 
-      <div class="statrow">
-        <div class="stat">
-          <b class="mono" style="font-size: 1.25rem;">13 NOV · 28 DIC</b>
-          <span style="font-size: .8rem;">Inscripciones abiertas</span>
+      <!-- Tarjetas Tipo Evento Oficial v2.0 -->
+      <div class="evento-cards-grid">
+        <div class="card-evento">
+          <div class="card-evento-date">
+            <span class="date-num">13</span>
+            <span class="date-month">NOV</span>
+          </div>
+          <div class="card-evento-content">
+            <span class="card-evento-cat">INSCRIPCIONES</span>
+            <h4 class="card-evento-title">Período Abierto</h4>
+            <span class="card-evento-sub">Hasta el 28 de Diciembre</span>
+          </div>
         </div>
-        <div class="stat">
-          <b class="mono" style="font-size: 1.25rem;">18 ENE · FINES FEB</b>
-          <span style="font-size: .8rem;">Cursado del ingreso</span>
+
+        <div class="card-evento">
+          <div class="card-evento-date">
+            <span class="date-num">18</span>
+            <span class="date-month">ENE</span>
+          </div>
+          <div class="card-evento-content">
+            <span class="card-evento-cat cat-azul">CURSADO</span>
+            <h4 class="card-evento-title">Seminario de Ingreso</h4>
+            <span class="card-evento-sub">Hasta fines de Febrero</span>
+          </div>
         </div>
       </div>
 
@@ -264,6 +278,12 @@ function render(){
   });
   [...navEl.children].forEach((d,i)=>d.classList.toggle("on",i===cur));
   document.getElementById("progress").style.width=((cur+1)/slides.length*100)+"%";
+  
+  // Insignia azul UTN FRSR v2.0 activa en diapositivas 1 a 7
+  const deckHeader = document.getElementById("deck-header");
+  if (deckHeader) {
+    deckHeader.classList.toggle("visible", cur >= 1);
+  }
 }
 function go(i){cur=Math.max(0,Math.min(slides.length-1,i));render()}
 function step(d){go(cur+d)}
