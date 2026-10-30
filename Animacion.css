@@ -204,6 +204,10 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
   #s0 .stat span { font-size: .72rem; }
   .hero-btn { margin-top: 1.2rem !important; }
 
+  /* Asegurar alineación a la izquierda en diapositiva de contacto e ingreso */
+  #s7 .statrow { justify-content: flex-start !important; text-align: left !important; }
+  #s7 .stat { text-align: left !important; }
+
   /* Adaptación de la navegación para que no tape el texto en vertical */
   .arrow {
     top: auto;
@@ -233,7 +237,8 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
   /* En móviles compactos, encuadre de Diapositiva 7 */
   #s7 h1.big { font-size: clamp(1.25rem, 4.8vw, 1.6rem); margin-bottom: .3rem; }
   #s7 p.lead { font-size: .8rem; line-height: 1.35; margin-bottom: .4rem; }
-  #s7 .statrow { gap: .8rem; margin: .5rem 0; }
+  #s7 .statrow { justify-content: flex-start !important; text-align: left !important; gap: .8rem; margin: .5rem 0; }
+  #s7 .stat { text-align: left !important; }
   #s7 .stat b { font-size: 1rem; }
   #s7 .stat span { font-size: .7rem; }
   #s7 .contact-grid { margin-top: .5rem !important; padding-top: .5rem !important; gap: .6rem !important; }
