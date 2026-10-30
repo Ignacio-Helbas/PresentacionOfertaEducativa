@@ -149,6 +149,49 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
 .linklist a { color: var(--azul); text-decoration: none; display: block; margin: .6rem 0; font-size: 1rem; font-weight: bold; }
 .linklist a:hover { text-decoration: underline; }
 
+/* Estilos Diapositiva 7 (Sede e Ingreso) */
+.sede-box {
+  margin-top: 1.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  max-width: 720px;
+}
+.sede-label {
+  display: block;
+  font-size: .78rem;
+  font-weight: bold;
+  color: var(--dim);
+  letter-spacing: .08em;
+  margin-bottom: .35rem;
+}
+.sede-info {
+  font-size: .88rem;
+  margin: 0 0 .8rem;
+  color: var(--ink);
+  line-height: 1.45;
+}
+.sede-info span {
+  color: var(--dim);
+}
+#s7 .statrow {
+  justify-content: flex-start;
+  margin: 1.2rem 0 1.5rem;
+  gap: 2.2rem;
+}
+#s7 .stat {
+  text-align: left;
+}
+#s7 .linklist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 0;
+}
+#s7 .linklist a {
+  margin: 0;
+  font-size: .95rem;
+}
+
 .ig-link { display: inline-flex; align-items: center; gap: .65rem; text-decoration: none; margin: .6rem 0; transition: opacity .2s ease; }
 .ig-link:hover { opacity: .85; }
 .ig-circle { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); display: flex; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
@@ -235,14 +278,17 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
   .career-card h3 { margin-top: 0 !important; }
 
   /* En móviles compactos, encuadre de Diapositiva 7 */
-  #s7 h1.big { font-size: clamp(1.25rem, 4.8vw, 1.6rem); margin-bottom: .3rem; }
-  #s7 p.lead { font-size: .8rem; line-height: 1.35; margin-bottom: .4rem; }
-  #s7 .statrow { justify-content: flex-start !important; text-align: left !important; gap: .8rem; margin: .5rem 0; }
+  #s7 h1.big { font-size: clamp(1.35rem, 5.2vw, 1.75rem); margin-bottom: .4rem; }
+  #s7 p.lead { font-size: .88rem; line-height: 1.4; margin-bottom: .6rem; }
+  #s7 .statrow { justify-content: flex-start !important; text-align: left !important; gap: .75rem; margin: .7rem 0; flex-direction: column; }
   #s7 .stat { text-align: left !important; }
-  #s7 .stat b { font-size: 1rem; }
-  #s7 .stat span { font-size: .7rem; }
-  #s7 .contact-grid { margin-top: .5rem !important; padding-top: .5rem !important; gap: .6rem !important; }
-  #s7 .startbtn { margin-top: .8rem !important; }
+  #s7 .stat b { font-size: 1.05rem; }
+  #s7 .stat span { font-size: .75rem; }
+  #s7 .sede-box { margin-top: .9rem !important; padding-top: .8rem !important; }
+  #s7 .sede-info { font-size: .78rem; margin-bottom: .5rem; }
+  #s7 .linklist { flex-direction: column; gap: .4rem; }
+  #s7 .linklist a { font-size: .85rem; }
+  #s7 .startbtn { margin-top: 1.2rem !important; }
 
   /* Los botones ocupan todo el ancho del celular simulando una App */
   .btn-block {
