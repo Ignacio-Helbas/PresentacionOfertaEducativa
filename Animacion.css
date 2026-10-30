@@ -145,6 +145,28 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
 .hero-btn { margin-top: 2.5rem; }
 .planbtn { margin-top: 1.3rem; color: #ffffff; }
 .planbtn:hover { filter: brightness(1.1); }
+
+/* Grupo de botones en diapositivas de carrera */
+.career-btn-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 1.8rem;
+  flex-wrap: wrap;
+}
+.career-btn-group .planbtn,
+.career-btn-group .startbtn {
+  margin: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .72rem 1.6rem;
+  font-size: .92rem;
+  line-height: 1.2;
+  box-sizing: border-box;
+  border: 2px solid;
+  border-radius: 4px;
+}
 .blueline { position: absolute; left: 8%; bottom: 14%; width: 160px; height: 2px; background: var(--azul); opacity: .5; }
 .linklist a { color: var(--azul); text-decoration: none; display: block; margin: .6rem 0; font-size: 1rem; font-weight: bold; }
 .linklist a:hover { text-decoration: underline; }
@@ -297,5 +319,12 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
     margin-right: 0;
     box-sizing: border-box;
   }
-  .mobile-btn-group { flex-direction: column; gap: 0.5rem; margin-bottom: 3rem;}
+  .career-btn-group, .mobile-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1.4rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+  }
 }
