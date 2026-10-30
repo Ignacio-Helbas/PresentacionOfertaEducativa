@@ -128,9 +128,11 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
 .stat b { display: block; font-size: 1.8rem; color: var(--ink); }
 .stat span { font-size: .85rem; color: var(--dim); font-weight: bold; }
 
-.rightpanel { position: relative; height: 75%; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; background: var(--bg0); }
-.rightpanel svg { width: 55%; height: 55%; opacity: .9; }
-.scanline { position: absolute; left: 0; right: 0; height: 2px; opacity: .5; animation: scan 3.5s linear infinite; }
+.rightpanel { position: relative; width: 100%; height: 387px; max-height: min(387px, 60vh); display: flex; align-items: center; justify-content: center; background: var(--bg0); overflow: hidden; border-radius: 8px; border: 2px solid var(--line); }
+.rightpanel::after { content: ""; position: absolute; inset: 0; border: 2px solid inherit; border-color: inherit; border-radius: inherit; pointer-events: none; z-index: 5; }
+.rightpanel svg { width: 55%; height: 55%; opacity: .9; position: relative; z-index: 1; }
+.rightpanel img, .career-img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; position: relative; z-index: 1; }
+.scanline { position: absolute; left: 0; right: 0; height: 2px; opacity: .5; animation: scan 3.5s linear infinite; z-index: 3; pointer-events: none; }
 @keyframes scan { 0% { top: 4%; } 100% { top: 94%; } }
 
 /* Botones */
