@@ -142,6 +142,7 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
 }
 .startbtn { margin-top: 1.6rem; border: 2px solid var(--azul); color: var(--azul); background: transparent; letter-spacing: .05em; }
 .startbtn:hover { background: var(--azul); color: #ffffff; }
+.hero-btn { margin-top: 2.5rem; }
 .planbtn { margin-top: 1.3rem; color: #ffffff; }
 .planbtn:hover { filter: brightness(1.1); }
 .blueline { position: absolute; left: 8%; bottom: 14%; width: 160px; height: 2px; background: var(--azul); opacity: .5; }
@@ -184,18 +185,24 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
   }
   
   .slide { 
-    padding: 15% 6% 20% 6%; /* Más espacio arriba y abajo para que el texto respire */
+    padding: 12% 6% 16% 6%; /* Más proporcionado para encuadrar en pantalla */
   }
 
   .slide-content {
-    margin: 0; /* Permite que el contenido fluya desde arriba */
+    margin: auto 0; /* Centrado vertical suave cuando el contenido cabe */
   }
 
-  .hero-container { flex-direction: column-reverse; text-align: center; gap: 2rem; margin-top: 1rem; }
-  .hero-visual { display: flex; max-width: 220px; min-height: auto;}
+  /* Diapositiva 0 (Inicio) perfectamente encuadrada */
+  .hero-container { flex-direction: column-reverse; text-align: center; gap: 1rem; margin-top: 0; }
+  .hero-visual { display: flex; max-width: 110px; min-height: auto; margin: 0 auto; }
   .blueline { display: none; }
-  .statrow { justify-content: center; gap: 1.5rem;}
-  #s0 .slide-content { align-items: center; }
+  .statrow { justify-content: center; gap: 1.1rem; margin: .8rem 0; }
+  #s0 .slide-content { align-items: center; width: 100%; }
+  #s0 h1.big { font-size: clamp(1.8rem, 6.5vw, 2.3rem); margin-bottom: .4rem; }
+  #s0 p.lead { font-size: .88rem; line-height: 1.45; margin-bottom: .5rem; max-width: 90%; }
+  #s0 .stat b { font-size: 1.25rem; }
+  #s0 .stat span { font-size: .72rem; }
+  .hero-btn { margin-top: 1.2rem !important; }
 
   /* Adaptación de la navegación para que no tape el texto en vertical */
   .arrow {
@@ -222,6 +229,15 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
   }
   .career-card .iconbox { margin: 0 !important; width: 56px; height: 56px; }
   .career-card h3 { margin-top: 0 !important; }
+
+  /* En móviles compactos, encuadre de Diapositiva 7 */
+  #s7 h1.big { font-size: clamp(1.25rem, 4.8vw, 1.6rem); margin-bottom: .3rem; }
+  #s7 p.lead { font-size: .8rem; line-height: 1.35; margin-bottom: .4rem; }
+  #s7 .statrow { gap: .8rem; margin: .5rem 0; }
+  #s7 .stat b { font-size: 1rem; }
+  #s7 .stat span { font-size: .7rem; }
+  #s7 .contact-grid { margin-top: .5rem !important; padding-top: .5rem !important; gap: .6rem !important; }
+  #s7 .startbtn { margin-top: .8rem !important; }
 
   /* Los botones ocupan todo el ancho del celular simulando una App */
   .btn-block {
