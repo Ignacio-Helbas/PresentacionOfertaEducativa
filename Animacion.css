@@ -146,6 +146,13 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
 .planbtn:hover { filter: brightness(1.1); }
 .blueline { position: absolute; left: 8%; bottom: 14%; width: 160px; height: 2px; background: var(--azul); opacity: .5; }
 .linklist a { color: var(--azul); text-decoration: none; display: block; margin: .6rem 0; font-size: 1rem; font-weight: bold; }
+.linklist a:hover { text-decoration: underline; }
+
+.ig-link { display: inline-flex; align-items: center; gap: .65rem; text-decoration: none; margin: .6rem 0; transition: opacity .2s ease; }
+.ig-link:hover { opacity: .85; }
+.ig-circle { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); display: flex; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+.ig-user { font-size: .95rem; font-weight: bold; color: var(--azul); text-decoration: none; }
+.ig-link:hover .ig-user { text-decoration: underline; }
 
 /* Quiz */
 .quizwrap { max-width: 640px; margin-bottom: 2rem; }
