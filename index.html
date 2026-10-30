@@ -102,14 +102,33 @@
   <div class="slide" id="s7">
     <div class="slide-content">
       <span class="idx mono">07 / 07</span>
-      <span class="tag mono">CONTACTO</span>
+      <span class="tag mono">CONTACTO E INGRESO</span>
       <h1 class="big" style="font-size:clamp(1.5rem,3.4vw,2.2rem)">Sumate a la próxima generación de ingenieros.</h1>
-      <p class="lead mono" style="font-size:.8rem; margin-bottom: 2rem;">AV. JUSTO JOSÉ DE URQUIZA 314 · SAN RAFAEL, MENDOZA<br>+54 9 260 442-1078</p>
+      
+      <!-- Tarjeta informativa de Inscripciones e Ingreso -->
+      <div class="ingreso-box" style="margin: 1.2rem 0 1.5rem; padding: 1.1rem 1.3rem; background: var(--bg0); border-left: 4px solid var(--azul); border-radius: 6px; max-width: 680px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        <span class="mono" style="display: block; font-size: .8rem; font-weight: bold; color: var(--azul); letter-spacing: .08em; margin-bottom: .4rem;">CALENDARIO DE INGRESO UNIVERSITARIO</span>
+        <p style="margin: 0 0 .8rem; font-size: .95rem; line-height: 1.5; color: var(--ink);">
+          Desde el <strong>2 de noviembre al 28 de diciembre</strong> estarán abiertas las inscripciones para cursar el ingreso universitario desde el <strong>18 de enero hasta fines del mes de febrero</strong>.
+        </p>
+        <div style="display: flex; gap: 1.8rem; flex-wrap: wrap;">
+          <div style="border-left: 2px solid rgba(2, 85, 123, 0.35); padding-left: .7rem;">
+            <b class="mono" style="display: block; font-size: 1rem; color: var(--ink);">02 NOV · 28 DIC</b>
+            <span style="font-size: .8rem; color: var(--dim); font-weight: bold;">Período de inscripción</span>
+          </div>
+          <div style="border-left: 2px solid rgba(2, 85, 123, 0.35); padding-left: .7rem;">
+            <b class="mono" style="display: block; font-size: 1rem; color: var(--ink);">18 ENE · FINES DE FEB</b>
+            <span style="font-size: .8rem; color: var(--dim); font-weight: bold;">Cursado del ingreso</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="lead mono" style="font-size:.8rem; margin-bottom: 1.5rem;">AV. JUSTO JOSÉ DE URQUIZA 314 · SAN RAFAEL, MENDOZA<br>+54 9 260 442-1078</p>
       <div class="linklist">
         <a href="https://www.frsr.utn.edu.ar/seminario-universitario" target="_blank" rel="noopener">→ Cómo inscribirse</a>
         <a href="https://www.frsr.utn.edu.ar/" target="_blank" rel="noopener">→ Sitio oficial de la Facultad</a>
       </div>
-      <button class="startbtn mono btn-block" style="margin-top:2rem" onclick="go(0)">← VOLVER AL INICIO</button>
+      <button class="startbtn mono btn-block" style="margin-top:1.5rem" onclick="go(0)">← VOLVER AL INICIO</button>
     </div>
   </div>
 
@@ -229,6 +248,7 @@ if (hash.includes("sistemas") || hash.includes("career0")) cur = 2;
 else if (hash.includes("civil") || hash.includes("career1")) cur = 3;
 else if (hash.includes("electro") || hash.includes("career2")) cur = 4;
 else if (hash.includes("industrial") || hash.includes("career3")) cur = 5;
+else if (hash.includes("contacto") || hash.includes("ingreso") || hash.includes("s7")) cur = 7;
 function render(){
   slides.forEach((s,i)=>{
     s.classList.toggle("active",i===cur);
