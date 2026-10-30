@@ -223,9 +223,9 @@ CAREERS.forEach((c, i) => {
           </div>
           <div class="chips">${c.chips.map(x=>`<span class="chip">${x}</span>`).join("")}</div>
           
-          <div class="career-btn-group">
-            <a class="planbtn mono btn-block" style="background:${c.color}; border-color:${c.color};" href="${c.plan}" target="_blank" rel="noopener">VER PLAN ↗</a>
-            <button class="startbtn mono btn-block" style="border-color:${c.color}; color:${c.color};" onclick="go(1)">← VOLVER</button>
+          <div class="career-btn-group" style="--c:${c.color};">
+            <a class="planbtn mono btn-block" href="${c.plan}" target="_blank" rel="noopener">VER PLAN ↗</a>
+            <button class="startbtn mono btn-block career-back-btn" onclick="go(1)">← VOLVER</button>
           </div>
         </div>
         <div class="rightpanel" style="border-color:${c.color}; box-shadow: 0 4px 15px ${c.color}25;">

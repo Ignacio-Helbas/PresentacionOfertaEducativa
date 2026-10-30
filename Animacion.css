@@ -154,8 +154,7 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
   margin-top: 1.8rem;
   flex-wrap: wrap;
 }
-.career-btn-group .planbtn,
-.career-btn-group .startbtn {
+.career-btn-group .planbtn {
   margin: 0 !important;
   display: inline-flex;
   align-items: center;
@@ -164,8 +163,43 @@ p.lead { color: var(--dim); max-width: 600px; line-height: 1.6; font-size: clamp
   font-size: .92rem;
   line-height: 1.2;
   box-sizing: border-box;
-  border: 2px solid;
+  border: 2px solid var(--c);
+  background: var(--c);
+  color: #ffffff !important;
   border-radius: 4px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.career-btn-group .planbtn:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+.career-btn-group .career-back-btn {
+  margin: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .72rem 1.6rem;
+  font-size: .92rem;
+  line-height: 1.2;
+  box-sizing: border-box;
+  border: 2px solid var(--c) !important;
+  color: var(--c) !important;
+  background: transparent !important;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.career-btn-group .career-back-btn:hover,
+.career-btn-group .career-back-btn:active,
+.career-btn-group .career-back-btn:focus-visible {
+  background: var(--c) !important;
+  color: #ffffff !important;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+.career-btn-group .career-back-btn:active {
+  transform: translateY(1px);
 }
 .blueline { position: absolute; left: 8%; bottom: 14%; width: 160px; height: 2px; background: var(--azul); opacity: .5; }
 .linklist a { color: var(--azul); text-decoration: none; display: block; margin: .6rem 0; font-size: 1rem; font-weight: bold; }
