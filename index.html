@@ -348,6 +348,7 @@ function render(){
 function go(i){cur=Math.max(0,Math.min(slides.length-1,i));render()}
 function step(d){go(cur+d)}
 document.addEventListener("keydown",e=>{
+  if(document.getElementById('careerModalBackdrop')?.classList.contains('active')) return;
   if(e.key==="ArrowRight")step(1);
   if(e.key==="ArrowLeft")step(-1);
 });
@@ -358,6 +359,11 @@ deck.addEventListener("touchstart",e=>{
 });
 deck.addEventListener("touchend",e=>{
   if(touchX===null || touchY===null)return;
+  // Si la ficha oficial (modal) está abierta en mobile, no cambiamos de diapositiva
+  if(document.getElementById('careerModalBackdrop')?.classList.contains('active')) {
+    touchX=null; touchY=null;
+    return;
+  }
   const dx=e.changedTouches[0].clientX-touchX;
   const dy=e.changedTouches[0].clientY-touchY;
   // Solo cambiamos de diapositiva si el swipe fue más horizontal que vertical (para no entorpecer el scroll de lectura)
