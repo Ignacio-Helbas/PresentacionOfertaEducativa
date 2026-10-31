@@ -127,7 +127,7 @@
             <span class="date-month">ENE</span>
           </div>
           <div class="card-evento-content">
-            <span class="card-evento-cat cat-azul">CURSADO</span>
+            <span class="card-evento-cat">CURSADO</span>
             <h4 class="card-evento-title">Seminario de Ingreso</h4>
             <span class="card-evento-sub">Hasta fines de Febrero</span>
           </div>
@@ -138,17 +138,39 @@
         <span class="mono sede-label">SEDE FACULTAD REGIONAL SAN RAFAEL</span>
         <p class="mono sede-info">
           AV. JUSTO JOSÉ DE URQUIZA 314 · SAN RAFAEL, MENDOZA<br>
-          <span>Tel. +54 9 260 442-1078</span>
+          <span>Tel. +54 9 260 442-1078</span> · <span>Consultas e informes: </span><a href="mailto:sec_acad@frsr.utn.edu.ar?subject=Consulta:%20Seminario%20de%20Ingreso%20Universitario%20-%20UTN%20FRSR">sec_acad@frsr.utn.edu.ar</a>
         </p>
         <div class="linklist">
           <a href="https://www.frsr.utn.edu.ar/seminario-universitario" target="_blank" rel="noopener">→ Cómo inscribirse al Seminario Universitario</a>
           <a href="https://www.frsr.utn.edu.ar/" target="_blank" rel="noopener">→ Sitio oficial de la Facultad (FRSR)</a>
+          <a href="mailto:sec_acad@frsr.utn.edu.ar?subject=Consulta:%20Seminario%20de%20Ingreso%20Universitario%20-%20UTN%20FRSR">→ Consultas: Cursado de Ingreso Universitario</a>
         </div>
       </div>
 
       <div>
         <button class="startbtn mono btn-block" onclick="go(0)">← VOLVER AL INICIO</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal Ficha Académica Oficial (Versión 1: Sólida con color institucional) -->
+  <div class="modal-backdrop" id="careerModalBackdrop" onclick="if(event.target===this)closeCareerModal()">
+    <div class="modal-sheet theme-variant-solid" id="careerModalSheet">
+      <div class="modal-top">
+        <div class="modal-heading mono" id="modalHeading">FICHA OFICIAL</div>
+        <button class="modal-close-btn" onclick="closeCareerModal()" aria-label="Cerrar ventana">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-tab-bar">
+        <button class="mod-tab active mono" id="modalTab0" onclick="switchModalTab(0)">Perfil Profesional</button>
+        <button class="mod-tab mono" id="modalTab1" onclick="switchModalTab(1)">Actividades Reservadas</button>
+        <button class="mod-tab mono" id="modalTab2" onclick="switchModalTab(2)">Alcances</button>
+      </div>
+      <div class="modal-scroll-body" id="modalScrollBody"></div>
     </div>
   </div>
 
@@ -165,6 +187,16 @@ const CAREERS=[
   tag:"Software, datos y seguridad informática",
   years:"5 años",hours:"4016 hs",
   desc:"Forma profesionales capaces de analizar requerimientos de información y diseñar, desarrollar, implementar y controlar sistemas informáticos al servicio de organizaciones de cualquier rubro.",
+  profile:"El profesional en Ingeniería en Sistemas de Información tiene una sólida formación analítica, que le permite la interpretación y resolución de problemas mediante el empleo de metodologías de sistemas y tecnologías de la información y las comunicaciones. Por su preparación, resulta especialmente apto para integrar la información proveniente de distintos campos concurrentes a un proyecto común, afrontando con solvencia el planeamiento, desarrollo, dirección y control de los sistemas de información, comunicación de datos y software.",
+  reserved:[
+    "AR1: Especificar, proyectar y desarrollar sistemas de información, sistemas de comunicación de datos y software cuya utilización pueda afectar la seguridad, salud, bienes o derechos.",
+    "AR2: Proyectar y dirigir lo referido a seguridad informática.",
+    "AR3: Establecer métricas y normas de calidad de software.",
+    "AR4: Certificar el funcionamiento, condición de uso o estado de lo mencionado anteriormente.",
+    "AR5: Dirigir y controlar la implementación, operación y mantenimiento de lo anteriormente mencionado."
+  ],
+  scopeText:"Listado completo de los Alcances del Título en la pág. 14 de la Ord 1877 CSU.",
+  scopeLink:"https://www.frsr.utn.edu.ar/sistemas/#alcances",
   chips:["Seguridad informática","Desarrollo de software","Calidad de sistemas"],
   plan:"https://frsrutneduar-my.sharepoint.com/:b:/g/personal/web_frsr_utn_edu_ar/IQAoP-qR4d-MSY-2PwpPExMqAU0PEO1Xm5k931-MudNQInE?e=33eVlI",
   image:"https://www.frsr.utn.edu.ar/wp-content/uploads/2023/03/03-SistDeco.jpg",
@@ -172,8 +204,18 @@ const CAREERS=[
   path:'<rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/>'},
  {id:"civil",color:"#ea5437",name:"Ingeniería Civil",
   tag:"Estructuras, obras y desarrollo urbano",
-  years:"5 años",hours:"~4000 hs",
+  years:"5 años y medio",hours:"~4000 hs",
   desc:"Forma profesionales capaces de diseñar, proyectar, calcular y dirigir obras de infraestructura civil, vial e hidráulica, con criterios de calidad y sostenibilidad.",
+  profile:"Los Ingenieros y las Ingenieras Civiles de la UTN son profesionales que poseen una visión general del desarrollo del país y la región, cumpliendo un rol preponderante en la planificación integral del territorio y en la resolución de problemas de infraestructura para la producción de bienes y servicios, con criterios de sostenibilidad ambiental, seguridad y calidad.",
+  reserved:[
+    "AR1: Diseñar, calcular y proyectar estructuras, edificios, obras civiles y puentes, obras hidráulicas, de saneamiento, vías de comunicación y transporte.",
+    "AR2: Proyectar, dirigir y controlar la construcción, rehabilitación, demolición y mantenimiento de las obras indicadas en AR1.",
+    "AR3: Dirigir y certificar estudios geotécnicos para la fundación de obras civiles indicadas en AR1.",
+    "AR4: Proyectar y dirigir lo concerniente a la higiene y seguridad en las actividades mencionadas en AR1.",
+    "AR5: Certificar el funcionamiento y/o condición de uso o estado de lo mencionado anteriormente en AR1."
+  ],
+  scopeText:"Listado completo de los Alcances del Título en la pág. 14 de la Ord 1853 CSU.",
+  scopeLink:"https://www.frsr.utn.edu.ar/ingenieria-civil/#alcances",
   chips:["Estructuras","Obras viales","Hidráulica"],
   plan:"https://frsrutneduar-my.sharepoint.com/:b:/g/personal/web_frsr_utn_edu_ar/IQA4Mn1q00krQYCNsZdlv_WoAaQmWapWE_-N_8TSxXfb8dk?e=gDS9Yk",
   image:"https://www.frsr.utn.edu.ar/wp-content/uploads/2023/08/Carreras-Dec-Civ.png",
@@ -183,6 +225,15 @@ const CAREERS=[
   tag:"Energía, máquinas y automatización",
   years:"5 años",hours:"~4000 hs",
   desc:"Prepara profesionales para diseñar, calcular y mantener máquinas, instalaciones y sistemas eléctricos, mecánicos y de generación de energía.",
+  profile:"El Ingeniero y la Ingeniera Electromecánica de la UTN poseen una sólida formación en formulación y evaluación de proyectos, planificación, estudios, cálculo, construcción, operación y control de sistemas eléctricos, mecánicos y termo-fluidodinámicos, así como la gestión del mantenimiento, higiene, seguridad y gestión ambiental.",
+  reserved:[
+    "AR1: Diseñar, calcular y proyectar máquinas, equipos, dispositivos, instalaciones y sistemas eléctricos y/o mecánicos, sistemas e instalaciones de automatización y control y sistemas de generación, transformación, transporte y distribución de energía eléctrica, mecánica y térmica.",
+    "AR2: Proyectar, dirigir y controlar la construcción, operación y mantenimiento de lo anteriormente mencionado.",
+    "AR3: Certificar el funcionamiento, condición de uso o estado de lo anteriormente mencionado.",
+    "AR4: Proyectar y dirigir lo referido a la higiene y seguridad en su actividad profesional."
+  ],
+  scopeText:"Listado completo de los Alcances del Título en la pág. 13 de la Ord 1851 CSU.",
+  scopeLink:"https://www.frsr.utn.edu.ar/ingenieria-electromecanica/#alcances",
   chips:["Automatización","Energía eléctrica","Mantenimiento"],
   plan:"https://frsrutneduar-my.sharepoint.com/:b:/g/personal/web_frsr_utn_edu_ar/IQDe3_PeKOXOSodCXI_8q090AXrpE_jPvJF8T1yzlxkEilc?e=tUMP7x",
   image:"https://www.frsr.utn.edu.ar/wp-content/uploads/2023/08/Carreras-Dec-Ele.png",
@@ -193,6 +244,15 @@ const CAREERS=[
   tag:"Gestión de procesos y producción",
   years:"5 años",hours:"~4000 hs",
   desc:"Forma profesionales para gestionar organizaciones y sistemas productivos de forma integral, aplicando mejora continua y nuevas tecnologías.",
+  profile:"La carrera de Ingeniería Industrial de la UTN forma profesionales con capacidad para cumplir funciones en el campo de la gestión organizativa y productiva. Sus capacidades científicas, técnicas y profesionales les confieren aptitud para gerenciar organizaciones en forma integral, diseñar, implementar, gestionar, evaluar y mejorar sistemas productivos, aplicando sus competencias en forma sistémica, crítica, creativa y ética en un marco de competitividad y mejora continua.",
+  reserved:[
+    "AR1: Diseñar, proyectar y planificar operaciones, procesos e instalaciones para la obtención de bienes industrializados.",
+    "AR2: Dirigir y/o controlar las operaciones y el mantenimiento de lo anteriormente mencionado.",
+    "AR3: Certificar el funcionamiento y/o condición de uso o estado de lo anteriormente mencionado.",
+    "AR4: Proyectar y dirigir lo referido a la higiene, seguridad y control del impacto ambiental en lo concerniente a su actividad profesional."
+  ],
+  scopeText:"Listado completo de los Alcances del Título en la pág. 12 de la Ord 1885 CSU.",
+  scopeLink:"https://www.frsr.utn.edu.ar/ingenieria-industrial/#alcances",
   chips:["Producción","Logística","Mejora continua"],
   plan:"https://frsrutneduar-my.sharepoint.com/:b:/g/personal/web_frsr_utn_edu_ar/IQAzqlwRzWwTRpLQ-387n7xQAToQne6_MbGmb79vxZ9rZrI?e=TErCXV",
   image:"https://www.frsr.utn.edu.ar/wp-content/uploads/2023/08/Carreras-Dec-Ind.png",
@@ -233,12 +293,12 @@ CAREERS.forEach((c, i) => {
           <p class="lead">${c.desc}</p>
           <div class="metrics">
             <div class="metric"><b class="mono" style="color:${c.color}">${c.years}</b><span>Duración</span></div>
-            <div class="metric"><b class="mono" style="color:${c.color}">${c.hours}</b><span>Carga horaria</span></div>
           </div>
           <div class="chips">${c.chips.map(x=>`<span class="chip">${x}</span>`).join("")}</div>
           
           <div class="career-btn-group" style="--c:${c.color};">
             <a class="planbtn mono btn-block" href="${c.plan}" target="_blank" rel="noopener">VER PLAN ↗</a>
+            <button class="career-info-btn mono btn-block" onclick="openCareerModal('${c.id}')">PERFIL Y ALCANCES</button>
             <button class="startbtn mono btn-block career-back-btn" onclick="go(1)">← VOLVER</button>
           </div>
         </div>
@@ -307,6 +367,70 @@ deck.addEventListener("touchend",e=>{
   touchX=null; touchY=null;
 });
 render();
+
+// --- Lógica Modal Ficha Oficial ---
+let activeModalCareer = null;
+let activeModalTabIdx = 0;
+
+function openCareerModal(careerId) {
+  activeModalCareer = CAREERS.find(c => c.id === careerId);
+  if (!activeModalCareer) return;
+  const backdrop = document.getElementById('careerModalBackdrop');
+  if (backdrop) {
+    backdrop.style.setProperty('--c', activeModalCareer.color);
+    backdrop.classList.add('active');
+  }
+  const heading = document.getElementById('modalHeading');
+  if (heading) heading.innerText = `FICHA OFICIAL · ${activeModalCareer.name.toUpperCase()}`;
+  activeModalTabIdx = 0;
+  renderModalTabBody();
+}
+
+function closeCareerModal() {
+  const backdrop = document.getElementById('careerModalBackdrop');
+  if (backdrop) backdrop.classList.remove('active');
+}
+
+function switchModalTab(idx) {
+  activeModalTabIdx = idx;
+  renderModalTabBody();
+}
+
+function renderModalTabBody() {
+  if (!activeModalCareer) return;
+  [0, 1, 2].forEach(i => {
+    const tabEl = document.getElementById('modalTab' + i);
+    if (tabEl) tabEl.classList.toggle('active', i === activeModalTabIdx);
+  });
+  const body = document.getElementById('modalScrollBody');
+  if (!body) return;
+  
+  let innerHtml = '';
+  if (activeModalTabIdx === 0) {
+    innerHtml = `<p class="modal-profile-text">${activeModalCareer.profile}</p>`;
+  } else if (activeModalTabIdx === 1) {
+    innerHtml = `
+      <ul class="modal-res-list">
+        ${activeModalCareer.reserved.map(r => {
+          const colon = r.indexOf(':');
+          const code = colon !== -1 ? r.slice(0, colon) : '';
+          const desc = colon !== -1 ? r.slice(colon + 1).trim() : r;
+          return `<li><span class="ar-code mono" style="color:${activeModalCareer.color};">${code}:</span><span class="ar-desc">${desc}</span></li>`;
+        }).join('')}
+      </ul>
+    `;
+  } else {
+    innerHtml = `
+      <p class="modal-profile-text">${activeModalCareer.scopeText}</p>
+      ${activeModalCareer.scopeLink ? `<p><a href="${activeModalCareer.scopeLink}" target="_blank" rel="noopener" class="modal-scope-link mono" style="color:${activeModalCareer.color};">Ver ordenanza oficial completa ↗</a></p>` : ''}
+    `;
+  }
+  body.innerHTML = `<div class="tab-pane-animated">${innerHtml}</div>`;
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeCareerModal();
+});
 
 const QUESTIONS=[
  {q:"¿Qué te gusta más?",
