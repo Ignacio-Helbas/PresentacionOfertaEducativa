@@ -9,6 +9,7 @@ Sitio web publicado: [https://ignacio-helbas.github.io/PresentacionOfertaEducati
 ## Acceso Rápido
 
 - Web interactiva: [ignacio-helbas.github.io/PresentacionOfertaEducativa](https://ignacio-helbas.github.io/PresentacionOfertaEducativa/)
+- Presentación ejecutiva en PDF: [Propuesta_Institucional_UTN_FRSR.pdf](Propuesta_Institucional_UTN_FRSR.pdf)
 - Sitio oficial de la facultad: [frsr.utn.edu.ar](https://www.frsr.utn.edu.ar/)
 - Seminario de Ingreso Universitario: [frsr.utn.edu.ar/seminario-universitario](https://www.frsr.utn.edu.ar/seminario-universitario)
 
@@ -61,12 +62,13 @@ Cada carrera cuenta con un color representativo normalizado para su identificaci
 
 ```
 PresentacionOfertaEducativa/
-|-- index.html          # Código principal de la presentación y contenido académico
-|-- Animacion.css       # Estilos visuales, sistema responsivo y animaciones
-|-- README.md           # Documentación del proyecto
-|-- imagenes/           # Identidad gráfica institucional y recursos visuales
-    |-- logos/          # Variantes del logotipo e insignias oficiales UTN
-    `-- og-portada.png  # Imagen de portada para enlaces sociales
+|-- index.html                            # Código principal de la presentación y contenido académico
+|-- Animacion.css                         # Estilos visuales, sistema responsivo y animaciones
+|-- README.md                             # Documentación del proyecto
+|-- Propuesta_Institucional_UTN_FRSR.pdf  # Presentación institucional en PDF para autoridades
+|-- imagenes/                             # Identidad gráfica institucional y recursos visuales
+    |-- logos/                            # Variantes del logotipo e insignias oficiales UTN
+    `-- og-portada.png                    # Imagen de portada para enlaces sociales
 ```
 
 ---

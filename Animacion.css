@@ -658,8 +658,8 @@ p.lead { font-family: var(--font-main); color: var(--dim); max-width: 600px; lin
   .slide { 
     justify-content: flex-start; /* Evita que el inicio del contenido quede recortado arriba si hay zoom */
     padding-top: max(20px, calc(env(safe-area-inset-top) + 24px));
-    padding-left: max(16px, calc(env(safe-area-inset-left) + 12px));
-    padding-right: max(16px, calc(env(safe-area-inset-right) + 12px));
+    padding-left: max(18px, env(safe-area-inset-left));
+    padding-right: max(18px, env(safe-area-inset-right));
     padding-bottom: calc(96px + env(safe-area-inset-bottom)); /* Espacio libre garantizado para la barra de navegación */
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: contain;
@@ -670,6 +670,22 @@ p.lead { font-family: var(--font-main); color: var(--dim); max-width: 600px; lin
     margin: auto 0; /* Si entra completo, se centra verticalmente; si desborda, fluye de arriba hacia abajo */
     width: 100%;
     min-height: min-content;
+  }
+
+  /* Unificar a 1 columna en cualquier pantalla vertical */
+  .career {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    width: 100%;
+  }
+  .career .left {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .rightpanel {
+    display: none;
   }
 
   /* Diapositiva 0 (Inicio) perfectamente encuadrada */
@@ -711,8 +727,34 @@ p.lead { font-family: var(--font-main); color: var(--dim); max-width: 600px; lin
 }
 
 @media (max-width: 640px) {
-  .career { grid-template-columns: 1fr; gap: 0.8rem; }
-  .rightpanel { display: none; }
+  /* Diapositivas de Carreras: Centrado perfecto y márgenes 100% simétricos en móvil */
+  .slide[id^="career"] .slide-content {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .slide[id^="career"] .tag {
+    align-self: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .career {
+    grid-template-columns: 1fr !important;
+    gap: 0.8rem;
+    width: 100% !important;
+  }
+  .career .left {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+  .rightpanel { display: none !important; }
   
   .career-grid { grid-template-columns: 1fr; gap: 0.8rem; margin-bottom: 1.5rem; }
   
@@ -723,15 +765,50 @@ p.lead { font-family: var(--font-main); color: var(--dim); max-width: 600px; lin
   .career-card h3 { margin-top: 0 !important; font-size: 1.05rem; }
   .career-card p { font-size: .82rem; line-height: 1.35; }
 
-  /* Tipografía y métricas fluidas por carrera */
-  .career h1.big { font-size: clamp(1.35rem, 5.2vw, 1.8rem); line-height: 1.15; margin-bottom: .3rem; }
-  .career p.lead { font-size: clamp(.84rem, 3.6vw, .98rem); line-height: 1.42; margin-bottom: .6rem; }
-  .career .tag { font-size: clamp(.75rem, 3.2vw, .9rem); padding: .3rem .8rem; margin-bottom: .6rem; }
-  .career .iconbox { width: 48px; height: 48px; border-radius: 12px; margin-bottom: .5rem; }
-  .career .metrics { margin: .4rem 0; gap: 1rem; }
+  /* Tipografía y métricas fluidas por carrera perfectamente centradas */
+  .career h1.big {
+    font-size: clamp(1.35rem, 5.2vw, 1.8rem);
+    line-height: 1.15;
+    margin-bottom: .3rem;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .career p.lead {
+    font-size: clamp(.84rem, 3.6vw, .98rem);
+    line-height: 1.42;
+    margin-bottom: .6rem;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 95% !important;
+  }
+  .career .tag {
+    font-size: clamp(.75rem, 3.2vw, .9rem);
+    padding: .3rem .8rem;
+    margin-bottom: .6rem;
+    align-self: center !important;
+  }
+  .career .iconbox {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    margin: 0 auto .6rem auto !important;
+  }
+  .career .metrics {
+    margin: .4rem 0 .6rem 0;
+    gap: 1rem;
+    justify-content: center !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
   .career .metric b { font-size: clamp(1.1rem, 4.8vw, 1.35rem); }
   .career .metric span { font-size: .75rem; }
-  .chips { gap: 6px; margin-bottom: .6rem; }
+  .chips {
+    gap: 6px;
+    margin-bottom: .8rem;
+    justify-content: center !important;
+    width: 100% !important;
+  }
   .chip { font-size: .75rem; padding: 4px 10px; }
 
   /* En móviles compactos, encuadre de Diapositiva 7 */
